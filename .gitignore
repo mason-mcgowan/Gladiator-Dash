@@ -7,3 +7,6 @@ node_modules/
 
 # Untouched source media — kept locally, too large for git
 media/_originals/
+
+# Legacy Wix export — kept locally, too large for git
+media/Wix-Legacy-Media/
