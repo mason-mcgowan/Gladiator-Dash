@@ -3,43 +3,206 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>About | Gladiator Dash</title>
-  <meta name="description" content="One Army and Still Creek Ranch">
+  <meta name="description" content="Learn more about Gladiator Dash, Still Creek Ranch, and One Army.">
+
   <link rel="icon" href="media/shared/gladiator-white.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
+
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap"
+  >
+
   <link rel="stylesheet" href="assets/site.css">
+
+  <style>
+    /* =========================
+       ABOUT PAGE
+       ========================= */
+
+    .about-section {
+      padding: 72px 0;
+      border-bottom: 1px solid rgba(105, 165, 215, 0.28);
+    }
+
+    .about-section:last-child {
+      border-bottom: none;
+    }
+
+    .about-content {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .about-content h2 {
+      margin: 0 0 22px;
+      color: #ffffff;
+      font-family: "Archivo", sans-serif;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+    }
+
+    .about-content p {
+      margin: 0 0 18px;
+      color: #aebfd1;
+      font-size: 1.05rem;
+      line-height: 1.75;
+    }
+
+    .about-content a {
+      color: #ffffff;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .about-image {
+      width: 100%;
+      margin-top: 34px;
+      overflow: hidden;
+      border: 1px solid rgba(105, 165, 215, 0.3);
+      background: #101925;
+      aspect-ratio: 16 / 9;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Slightly different framing for the Still Creek image */
+    .about-image--still-creek img {
+      object-position: center 55%;
+    }
+
+    /* One Army image already has a wide composition */
+    .about-image--one-army img {
+      object-position: center center;
+    }
+
+    @media (max-width: 760px) {
+      .about-section {
+        padding: 48px 0;
+      }
+
+      .about-content h2 {
+        font-size: 2rem;
+      }
+
+      .about-content p {
+        font-size: 1rem;
+        line-height: 1.65;
+      }
+
+      .about-image {
+        margin-top: 26px;
+        aspect-ratio: 4 / 3;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-  <a class="skip-link" href="#main">Skip to content</a>
+  <a class="skip-link" href="#main">
+    Skip to content
+  </a>
 
   <header class="site-header">
     <div class="site-header__inner">
 
       <a class="site-header__brand" href="index.html">
-        <img src="media/shared/gladiator-white.png" alt="" width="500" height="500">
+        <img
+          src="media/shared/gladiator-white.png"
+          alt="Gladiator Dash"
+          width="500"
+          height="500"
+        >
         <span>Home</span>
       </a>
 
-      <button class="nav-toggle" type="button"
-              aria-label="Menu" aria-expanded="false" aria-controls="site-nav">
-        <span></span><span></span><span></span>
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-label="Menu"
+        aria-expanded="false"
+        aria-controls="site-nav"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
 
-      <nav class="site-nav" id="site-nav" aria-label="Main">
+      <nav
+        class="site-nav"
+        id="site-nav"
+        aria-label="Main"
+      >
+
         <ul class="site-nav__list">
-        <li><a href="obstacles.html">Obstacles</a></li>
-        <li><a href="about.html" aria-current="page">About</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="sponsors.html">Sponsors</a></li>
-        <li><a href="mercuria.html">Mercuria</a></li>
-        <li><a href="raffle.html">Raffle</a></li>
-        <li><a href="giveback.html">Giveback</a></li>
+
+          <li>
+            <a href="obstacles.html">
+              Obstacles
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="about.html"
+              aria-current="page"
+            >
+              About
+            </a>
+          </li>
+
+          <li>
+            <a href="faq.html">
+              FAQ
+            </a>
+          </li>
+
+          <li>
+            <a href="sponsors.html">
+              Sponsors
+            </a>
+          </li>
+
+          <li>
+            <a href="mercuria.html">
+              Mercuria
+            </a>
+          </li>
+
+          <li>
+            <a href="raffle.html">
+              Raffle
+            </a>
+          </li>
+
+          <li>
+            <a href="giveback.html">
+              Giveback
+            </a>
+          </li>
+
         </ul>
-        <a class="btn btn--primary site-nav__cta" href="https://www.zeffy.com/en-US/ticketing/gladiator-dash--2027">Register</a>
+
+        <a
+          class="btn btn--primary site-nav__cta"
+          href="https://www.zeffy.com/en-US/ticketing/gladiator-dash--2027"
+        >
+          Register
+        </a>
+
       </nav>
 
     </div>
@@ -49,15 +212,114 @@
 
     <div class="page-head">
       <div class="wrap">
-        <h1>About</h1>
-        <p>One Army and Still Creek Ranch</p>
+
+        <h1>
+          About
+        </h1>
+
+        <p>
+          One Army and Still Creek Ranch
+        </p>
+
       </div>
     </div>
 
-    <section class="section">
+    <!-- GLADIATOR DASH -->
+    <section class="about-section">
       <div class="wrap">
-        <!-- TODO: About content -->
-        <div class="stub">No content yet.</div>
+        <div class="about-content">
+
+          <h2>
+            Gladiator Dash
+          </h2>
+
+          <p>
+            Gladiator Dash is a 3.1 mile obstacle-integrated mud run and the
+            main philanthropy event of the Texas A&amp;M men's organization,
+            One Army. As Bryan-College Station's original obstacle-integrated
+            mud run, Gladiator Dash is definitely not just another 5K.
+            With challenging obstacles throughout the course, this race will
+            get you muddy and unleash your inner Gladiator.
+          </p>
+
+          <p>
+            Race Day includes live music, food trucks, and plenty of fun, so
+            feel free to come early and stay late! 100% of the proceeds from
+            Gladiator Dash benefit Still Creek Ranch, which is how we help
+            raise thousands of dollars for Still Creek Ranch each year.
+          </p>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- STILL CREEK RANCH -->
+    <section class="about-section">
+      <div class="wrap">
+        <div class="about-content">
+
+          <h2>
+            Still Creek Ranch
+          </h2>
+
+          <p>
+            Since 1988, Still Creek has rescued boys and girls from crisis
+            environments including abuse, neglect, abandonment, sex
+            trafficking, and restored their lives by placing them in a loving,
+            family-style home. Over the years One Army has had the privilege
+            to work with Still Creek by serving them in any way that we can:
+            from raising over $900,000 to spending time and forming
+            relationships with the kids.
+          </p>
+
+          <p>
+            To learn more about the amazing things they do at Still Creek
+            Ranch, visit
+            <a
+              href="https://stillcreekranch.org"
+              target="_blank"
+              rel="noopener"
+            >
+              stillcreekranch.org
+            </a>.
+          </p>
+
+          <div class="about-image about-image--still-creek">
+            <img
+              src="media/about/still_creek_image.jpg"
+              alt="One Army members presenting a donation to Still Creek Ranch"
+            >
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ONE ARMY -->
+    <section class="about-section">
+      <div class="wrap">
+        <div class="about-content">
+
+          <h2>
+            One Army | Texas Aggie Men United
+          </h2>
+
+          <p>
+            One Army is a men's service and leadership organization at Texas
+            A&amp;M University which focuses on developing its members as
+            young men while giving back to our community. The One Army
+            mission is to develop its members as Aggies and leaders by serving
+            the campus and community and promoting unity in Aggieland.
+          </p>
+
+          <div class="about-image about-image--one-army">
+            <img
+              src="media/about/one_army_members.jpg.jpg"
+              alt="One Army members at Texas A&M University"
+            >
+          </div>
+
+        </div>
       </div>
     </section>
 
@@ -67,42 +329,126 @@
     <div class="site-footer__inner">
 
       <div class="site-footer__brand">
-        <img src="media/shared/gd-logo-white.png" alt="One Army Gladiator Dash, April 11 2027" width="1538" height="643">
+
+        <img
+          src="media/shared/gladiator-white.png"
+          alt="Gladiator Dash"
+          width="500"
+          height="500"
+        >
+
         <p class="site-footer__tagline">
-          <strong>Run by One Army.</strong>
+          <strong>
+            Run by One Army.
+          </strong>
+
           Every dollar raised goes to Still Creek Ranch.
         </p>
+
       </div>
 
-      <nav class="site-footer__nav" aria-label="Footer">
+      <nav
+        class="site-footer__nav"
+        aria-label="Footer"
+      >
+
         <ul>
-          <li><a href="https://www.zeffy.com/en-US/ticketing/gladiator-dash--2027">Register</a></li>
-          <li><a href="obstacles.html">Obstacles</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-          <li><a href="about.html">About</a></li>
+
+          <li>
+            <a
+              href="https://www.zeffy.com/en-US/ticketing/gladiator-dash--2027"
+            >
+              Register
+            </a>
+          </li>
+
+          <li>
+            <a href="obstacles.html">
+              Obstacles
+            </a>
+          </li>
+
+          <li>
+            <a href="faq.html">
+              FAQ
+            </a>
+          </li>
+
+          <li>
+            <a href="about.html">
+              About
+            </a>
+          </li>
+
         </ul>
+
         <ul>
-          <li><a href="sponsors.html">Sponsors</a></li>
-          <li><a href="mercuria.html">Mercuria</a></li>
-          <li><a href="raffle.html">Raffle</a></li>
-          <li><a href="giveback.html">Giveback</a></li>
+
+          <li>
+            <a href="sponsors.html">
+              Sponsors
+            </a>
+          </li>
+
+          <li>
+            <a href="mercuria.html">
+              Mercuria
+            </a>
+          </li>
+
+          <li>
+            <a href="raffle.html">
+              Raffle
+            </a>
+          </li>
+
+          <li>
+            <a href="giveback.html">
+              Giveback
+            </a>
+          </li>
+
         </ul>
+
       </nav>
 
       <div class="site-footer__contact">
-        <h2>Questions</h2>
-        <p><a href="mailto:onearmy.philanthropy@gmail.com">onearmy.philanthropy@gmail.com</a></p>
-        <p><a href="https://www.instagram.com/gladiatordash/" rel="noopener">Instagram</a></p>
-        <p>Lake Bryan, Bryan, Texas</p>
+
+        <h2>
+          Questions
+        </h2>
+
+        <p>
+          <a href="mailto:onearmy.philanthropy@gmail.com">
+            onearmy.philanthropy@gmail.com
+          </a>
+        </p>
+
+        <p>
+          <a
+            href="https://www.instagram.com/gladiatordash/"
+            rel="noopener"
+          >
+            Instagram
+          </a>
+        </p>
+
+        <p>
+          Lake Bryan, Bryan, Texas
+        </p>
+
       </div>
 
     </div>
 
     <div class="site-footer__legal">
-      <p>&copy; <span data-year></span> One Army</p>
+      <p>
+        &copy; <span data-year></span> One Army
+      </p>
     </div>
   </footer>
 
   <script src="assets/nav.js"></script>
+
 </body>
 </html>
