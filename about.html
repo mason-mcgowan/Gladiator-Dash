@@ -36,9 +36,11 @@
       border-bottom: none;
     }
 
+    /* Full-width intro section */
     .about-intro {
-      max-width: 1180px;
-      margin: 0 auto;
+      width: 100%;
+      max-width: none;
+      margin: 0;
     }
 
     .about-intro h2,
@@ -67,14 +69,19 @@
       line-height: 1.72;
     }
 
+    .about-intro p {
+      width: 100%;
+      max-width: none;
+    }
+
     .about-intro p:last-child,
     .about-split__text p:last-child {
       margin-bottom: 0;
     }
 
-    .about-intro {
-      max-width: 1100px;
-    }
+    /* =========================
+       SPLIT SECTIONS
+       ========================= */
 
     .about-split {
       max-width: 1180px;
@@ -94,6 +101,10 @@
       min-width: 0;
     }
 
+    /* =========================
+       IMAGES
+       ========================= */
+
     .about-split__image {
       width: 100%;
       overflow: hidden;
@@ -109,7 +120,7 @@
       object-fit: cover;
     }
 
-    /* Still Creek is more square */
+    /* Still Creek photo */
     .about-split__image--still {
       aspect-ratio: 4 / 3;
       max-width: 500px;
@@ -120,7 +131,7 @@
       object-position: center center;
     }
 
-    /* One Army is naturally wide */
+    /* One Army photo */
     .about-split__image--army {
       aspect-ratio: 16 / 10;
       max-width: 560px;
@@ -130,6 +141,10 @@
     .about-split__image--army img {
       object-position: center center;
     }
+
+    /* =========================
+       LINKS
+       ========================= */
 
     .about-copy-link {
       color: #ffffff;
@@ -141,6 +156,10 @@
     .about-copy-link:hover {
       opacity: 0.8;
     }
+
+    /* =========================
+       TABLET
+       ========================= */
 
     @media (max-width: 900px) {
       .about-section {
@@ -167,6 +186,10 @@
         order: 1;
       }
     }
+
+    /* =========================
+       MOBILE
+       ========================= */
 
     @media (max-width: 600px) {
       .about-section {
@@ -199,6 +222,10 @@
     Skip to content
   </a>
 
+  <!-- =========================
+       HEADER
+       ========================= -->
+
   <header class="site-header">
     <div class="site-header__inner">
 
@@ -229,6 +256,7 @@
         id="site-nav"
         aria-label="Main"
       >
+
         <ul class="site-nav__list">
 
           <li>
@@ -238,7 +266,10 @@
           </li>
 
           <li>
-            <a href="about.html" aria-current="page">
+            <a
+              href="about.html"
+              aria-current="page"
+            >
               About
             </a>
           </li>
@@ -281,10 +312,15 @@
         >
           Register
         </a>
+
       </nav>
 
     </div>
   </header>
+
+  <!-- =========================
+       MAIN
+       ========================= -->
 
   <main id="main">
 
@@ -302,8 +338,10 @@
       </div>
     </div>
 
+    <!-- =========================
+         GLADIATOR DASH
+         ========================= -->
 
-    <!-- GLADIATOR DASH -->
     <section class="about-section">
       <div class="wrap">
 
@@ -334,8 +372,10 @@
       </div>
     </section>
 
+    <!-- =========================
+         STILL CREEK RANCH
+         ========================= -->
 
-    <!-- STILL CREEK RANCH -->
     <section class="about-section">
       <div class="wrap">
 
@@ -377,10 +417,12 @@
           </div>
 
           <div class="about-split__image about-split__image--still">
+
             <img
               src="media/about/still_creek_image.jpg"
               alt="One Army members presenting a donation to Still Creek Ranch"
             >
+
           </div>
 
         </div>
@@ -388,18 +430,22 @@
       </div>
     </section>
 
+    <!-- =========================
+         ONE ARMY
+         ========================= -->
 
-    <!-- ONE ARMY -->
     <section class="about-section">
       <div class="wrap">
 
         <div class="about-split about-split--reverse">
 
           <div class="about-split__image about-split__image--army">
+
             <img
               src="media/about/one_army_members.jpeg"
               alt="Members of One Army at Texas A&M University"
             >
+
           </div>
 
           <div class="about-split__text">
@@ -429,8 +475,12 @@
 
   </main>
 
+  <!-- =========================
+       FOOTER
+       ========================= -->
 
   <footer class="site-footer">
+
     <div class="site-footer__inner">
 
       <div class="site-footer__brand">
@@ -446,16 +496,23 @@
           <strong>
             Run by One Army.
           </strong>
+
           Every dollar raised goes to Still Creek Ranch.
         </p>
 
       </div>
 
-      <nav class="site-footer__nav" aria-label="Footer">
+      <nav
+        class="site-footer__nav"
+        aria-label="Footer"
+      >
 
         <ul>
+
           <li>
-            <a href="https://www.zeffy.com/en-US/ticketing/gladiator-dash--2027">
+            <a
+              href="https://www.zeffy.com/en-US/ticketing/gladiator-dash--2027"
+            >
               Register
             </a>
           </li>
@@ -477,9 +534,11 @@
               About
             </a>
           </li>
+
         </ul>
 
         <ul>
+
           <li>
             <a href="sponsors.html">
               Sponsors
@@ -503,6 +562,7 @@
               Giveback
             </a>
           </li>
+
         </ul>
 
       </nav>
@@ -537,9 +597,11 @@
     </div>
 
     <div class="site-footer__legal">
+
       <p>
         &copy; <span data-year></span> One Army
       </p>
+
     </div>
 
   </footer>
