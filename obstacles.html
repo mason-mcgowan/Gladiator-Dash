@@ -3,15 +3,127 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>Obstacles | Gladiator Dash</title>
-  <meta name="description" content="Ten obstacles, every one challenge by choice">
+  <meta name="description" content="Gladiator Dash obstacles — every obstacle is challenge by choice.">
+
   <link rel="icon" href="media/shared/gladiator-white.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap"
+  >
+
   <link rel="stylesheet" href="assets/site.css">
+
+  <style>
+    /* =========================
+       OBSTACLES PAGE
+       ========================= */
+
+    .obstacle-section {
+      padding-top: 72px;
+      padding-bottom: 96px;
+    }
+
+    .obstacle-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .obstacle-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 520px;
+      background: #0b1017;
+      border: 1px solid rgba(105, 165, 215, 0.24);
+    }
+
+    .obstacle-card img {
+      width: 100%;
+      height: 100%;
+      min-height: 520px;
+      object-fit: cover;
+      display: block;
+      transition:
+        transform 0.45s ease,
+        filter 0.45s ease;
+    }
+
+    .obstacle-card__overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          to top,
+          rgba(4, 9, 15, 0.92) 0%,
+          rgba(4, 9, 15, 0.38) 38%,
+          rgba(4, 9, 15, 0.05) 70%
+        );
+      pointer-events: none;
+    }
+
+    .obstacle-card__title {
+      position: absolute;
+      left: 30px;
+      right: 30px;
+      bottom: 26px;
+      z-index: 2;
+    }
+
+    .obstacle-card__title h2 {
+      margin: 0;
+      color: #ffffff;
+      font-family: "Archivo", sans-serif;
+      font-size: clamp(2.1rem, 4vw, 3.6rem);
+      font-weight: 800;
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+    }
+
+    .obstacle-card:hover img {
+      transform: scale(1.025);
+      filter: brightness(1.05);
+    }
+
+    .obstacle-note {
+      max-width: 720px;
+      margin: 48px auto 0;
+      color: #9eafc2;
+      text-align: center;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 760px) {
+      .obstacle-section {
+        padding-top: 40px;
+        padding-bottom: 64px;
+      }
+
+      .obstacle-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .obstacle-card,
+      .obstacle-card img {
+        min-height: 430px;
+      }
+
+      .obstacle-card__title {
+        left: 22px;
+        right: 22px;
+        bottom: 20px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
   <a class="skip-link" href="#main">Skip to content</a>
@@ -20,26 +132,58 @@
     <div class="site-header__inner">
 
       <a class="site-header__brand" href="index.html">
-        <img src="media/shared/gladiator-white.png" alt="" width="500" height="500">
+        <img
+          src="media/shared/gladiator-white.png"
+          alt=""
+          width="500"
+          height="500"
+        >
         <span>Home</span>
       </a>
 
-      <button class="nav-toggle" type="button"
-              aria-label="Menu" aria-expanded="false" aria-controls="site-nav">
-        <span></span><span></span><span></span>
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-label="Menu"
+        aria-expanded="false"
+        aria-controls="site-nav"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
 
       <nav class="site-nav" id="site-nav" aria-label="Main">
         <ul class="site-nav__list">
-        <li><a href="obstacles.html" aria-current="page">Obstacles</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="sponsors.html">Sponsors</a></li>
-        <li><a href="mercuria.html">Mercuria</a></li>
-        <li><a href="raffle.html">Raffle</a></li>
-        <li><a href="giveback.html">Giveback</a></li>
+          <li>
+            <a href="obstacles.html" aria-current="page">Obstacles</a>
+          </li>
+          <li>
+            <a href="about.html">About</a>
+          </li>
+          <li>
+            <a href="faq.html">FAQ</a>
+          </li>
+          <li>
+            <a href="sponsors.html">Sponsors</a>
+          </li>
+          <li>
+            <a href="mercuria.html">Mercuria</a>
+          </li>
+          <li>
+            <a href="raffle.html">Raffle</a>
+          </li>
+          <li>
+            <a href="giveback.html">Giveback</a>
+          </li>
         </ul>
-        <a class="btn btn--primary site-nav__cta" href="https://www.zeffy.com/en-US/ticketing/gladiator-dash--2027">Register</a>
+
+        <a
+          class="btn btn--primary site-nav__cta"
+          href="https://www.zeffy.com/en-US/ticketing/gladiator-dash--2027"
+        >
+          Register
+        </a>
       </nav>
 
     </div>
@@ -50,14 +194,109 @@
     <div class="page-head">
       <div class="wrap">
         <h1>Obstacles</h1>
-        <p>Ten obstacles, every one challenge by choice</p>
+        <p>Every obstacle. Challenge by choice.</p>
       </div>
     </div>
 
-    <section class="section">
+    <section class="section obstacle-section">
       <div class="wrap">
-        <!-- TODO: Obstacles content -->
-        <div class="stub">No content yet.</div>
+
+        <div class="obstacle-grid">
+
+          <article class="obstacle-card">
+            <img
+              src="media/obstacles/Gold%20Obstacles/Cargo.jpg"
+              alt="Racers completing the Cargo obstacle"
+            >
+            <div class="obstacle-card__overlay"></div>
+            <div class="obstacle-card__title">
+              <h2>Cargo</h2>
+            </div>
+          </article>
+
+          <article class="obstacle-card">
+            <img
+              src="media/obstacles/Gold%20Obstacles/Log%20Hurdles.jpg"
+              alt="Racers crossing the Log Hurdles obstacle"
+            >
+            <div class="obstacle-card__overlay"></div>
+            <div class="obstacle-card__title">
+              <h2>Log Hurdles</h2>
+            </div>
+          </article>
+
+          <article class="obstacle-card">
+            <img
+              src="media/obstacles/Gold%20Obstacles/Monkey%20Bars.jpg"
+              alt="Racer completing the Monkey Bars obstacle"
+            >
+            <div class="obstacle-card__overlay"></div>
+            <div class="obstacle-card__title">
+              <h2>Monkey Bars</h2>
+            </div>
+          </article>
+
+          <article class="obstacle-card">
+            <img
+              src="media/obstacles/Gold%20Obstacles/Mud%20Pit.jpg"
+              alt="Racers crawling through the Mud Pit"
+            >
+            <div class="obstacle-card__overlay"></div>
+            <div class="obstacle-card__title">
+              <h2>Mud Pit</h2>
+            </div>
+          </article>
+
+          <article class="obstacle-card">
+            <img
+              src="media/obstacles/Gold%20Obstacles/Q-Pipe.jpg"
+              alt="Racer completing the Q-Pipe obstacle"
+            >
+            <div class="obstacle-card__overlay"></div>
+            <div class="obstacle-card__title">
+              <h2>Q-Pipe</h2>
+            </div>
+          </article>
+
+          <article class="obstacle-card">
+            <img
+              src="media/obstacles/Gold%20Obstacles/Rush.jpg"
+              alt="Racer completing the Rush obstacle"
+            >
+            <div class="obstacle-card__overlay"></div>
+            <div class="obstacle-card__title">
+              <h2>Rush</h2>
+            </div>
+          </article>
+
+          <article class="obstacle-card">
+            <img
+              src="media/obstacles/Gold%20Obstacles/Skywalker.jpg"
+              alt="Racers completing the Skywalker obstacle"
+            >
+            <div class="obstacle-card__overlay"></div>
+            <div class="obstacle-card__title">
+              <h2>Skywalker</h2>
+            </div>
+          </article>
+
+          <article class="obstacle-card">
+            <img
+              src="media/obstacles/Gold%20Obstacles/Summit.jpg"
+              alt="Racer completing the Summit obstacle"
+            >
+            <div class="obstacle-card__overlay"></div>
+            <div class="obstacle-card__title">
+              <h2>Summit</h2>
+            </div>
+          </article>
+
+        </div>
+
+        <p class="obstacle-note">
+          Every obstacle is challenge by choice. Participants may skip any obstacle.
+        </p>
+
       </div>
     </section>
 
@@ -67,7 +306,13 @@
     <div class="site-footer__inner">
 
       <div class="site-footer__brand">
-        <img src="media/shared/gd-logo-white.png" alt="One Army Gladiator Dash, April 11 2027" width="1538" height="643">
+        <img
+          src="media/shared/gd-logo-white.png"
+          alt="One Army Gladiator Dash, April 11 2027"
+          width="1538"
+          height="643"
+        >
+
         <p class="site-footer__tagline">
           <strong>Run by One Army.</strong>
           Every dollar raised goes to Still Creek Ranch.
@@ -76,11 +321,16 @@
 
       <nav class="site-footer__nav" aria-label="Footer">
         <ul>
-          <li><a href="https://www.zeffy.com/en-US/ticketing/gladiator-dash--2027">Register</a></li>
+          <li>
+            <a href="https://www.zeffy.com/en-US/ticketing/gladiator-dash--2027">
+              Register
+            </a>
+          </li>
           <li><a href="obstacles.html">Obstacles</a></li>
           <li><a href="faq.html">FAQ</a></li>
           <li><a href="about.html">About</a></li>
         </ul>
+
         <ul>
           <li><a href="sponsors.html">Sponsors</a></li>
           <li><a href="mercuria.html">Mercuria</a></li>
@@ -91,8 +341,22 @@
 
       <div class="site-footer__contact">
         <h2>Questions</h2>
-        <p><a href="mailto:onearmy.philanthropy@gmail.com">onearmy.philanthropy@gmail.com</a></p>
-        <p><a href="https://www.instagram.com/gladiatordash/" rel="noopener">Instagram</a></p>
+
+        <p>
+          <a href="mailto:onearmy.philanthropy@gmail.com">
+            onearmy.philanthropy@gmail.com
+          </a>
+        </p>
+
+        <p>
+          <a
+            href="https://www.instagram.com/gladiatordash/"
+            rel="noopener"
+          >
+            Instagram
+          </a>
+        </p>
+
         <p>Lake Bryan, Bryan, Texas</p>
       </div>
 
@@ -104,5 +368,6 @@
   </footer>
 
   <script src="assets/nav.js"></script>
+
 </body>
 </html>
