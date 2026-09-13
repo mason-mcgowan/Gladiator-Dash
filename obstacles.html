@@ -19,109 +19,111 @@
   <link rel="stylesheet" href="assets/site.css">
 
   <style>
-    /* =========================
-       OBSTACLES PAGE
-       ========================= */
+  /* =========================
+     OBSTACLES PAGE
+     ========================= */
 
+  .obstacle-section {
+    padding-top: 56px;
+    padding-bottom: 80px;
+  }
+
+  .obstacle-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .obstacle-card {
+    position: relative;
+    overflow: hidden;
+    background: #0b1017;
+    border: 1px solid rgba(105, 165, 215, 0.24);
+    aspect-ratio: 1 / 1;
+  }
+
+  .obstacle-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition:
+      transform 0.45s ease,
+      filter 0.45s ease;
+  }
+
+  .obstacle-card__overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(
+        to top,
+        rgba(4, 9, 15, 0.92) 0%,
+        rgba(4, 9, 15, 0.38) 38%,
+        rgba(4, 9, 15, 0.05) 70%
+      );
+    pointer-events: none;
+  }
+
+  .obstacle-card__title {
+    position: absolute;
+    left: 22px;
+    right: 22px;
+    bottom: 18px;
+    z-index: 2;
+  }
+
+  .obstacle-card__title h2 {
+    margin: 0;
+    color: #ffffff;
+    font-family: "Archivo", sans-serif;
+    font-size: clamp(1.6rem, 3vw, 2.6rem);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+  }
+
+  .obstacle-card:hover img {
+    transform: scale(1.025);
+    filter: brightness(1.05);
+  }
+
+  .obstacle-note {
+    max-width: 720px;
+    margin: 40px auto 0;
+    color: #9eafc2;
+    text-align: center;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 760px) {
     .obstacle-section {
-      padding-top: 72px;
-      padding-bottom: 96px;
+      padding-top: 36px;
+      padding-bottom: 56px;
     }
 
     .obstacle-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 20px;
+      grid-template-columns: 1fr;
+      gap: 14px;
     }
 
     .obstacle-card {
-      position: relative;
-      overflow: hidden;
-      min-height: 520px;
-      background: #0b1017;
-      border: 1px solid rgba(105, 165, 215, 0.24);
-    }
-
-    .obstacle-card img {
-      width: 100%;
-      height: 100%;
-      min-height: 520px;
-      object-fit: cover;
-      display: block;
-      transition:
-        transform 0.45s ease,
-        filter 0.45s ease;
-    }
-
-    .obstacle-card__overlay {
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(
-          to top,
-          rgba(4, 9, 15, 0.92) 0%,
-          rgba(4, 9, 15, 0.38) 38%,
-          rgba(4, 9, 15, 0.05) 70%
-        );
-      pointer-events: none;
+      aspect-ratio: 4 / 3;
     }
 
     .obstacle-card__title {
-      position: absolute;
-      left: 30px;
-      right: 30px;
-      bottom: 26px;
-      z-index: 2;
+      left: 18px;
+      right: 18px;
+      bottom: 16px;
     }
 
     .obstacle-card__title h2 {
-      margin: 0;
-      color: #ffffff;
-      font-family: "Archivo", sans-serif;
-      font-size: clamp(2.1rem, 4vw, 3.6rem);
-      font-weight: 800;
-      line-height: 0.95;
-      letter-spacing: -0.04em;
-      text-transform: uppercase;
+      font-size: 1.8rem;
     }
-
-    .obstacle-card:hover img {
-      transform: scale(1.025);
-      filter: brightness(1.05);
-    }
-
-    .obstacle-note {
-      max-width: 720px;
-      margin: 48px auto 0;
-      color: #9eafc2;
-      text-align: center;
-      font-size: 0.95rem;
-      line-height: 1.6;
-    }
-
-    @media (max-width: 760px) {
-      .obstacle-section {
-        padding-top: 40px;
-        padding-bottom: 64px;
-      }
-
-      .obstacle-grid {
-        grid-template-columns: 1fr;
-        gap: 14px;
-      }
-
-      .obstacle-card,
-      .obstacle-card img {
-        min-height: 430px;
-      }
-
-      .obstacle-card__title {
-        left: 22px;
-        right: 22px;
-        bottom: 20px;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 
 <body>
