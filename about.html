@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>About | Gladiator Dash</title>
-  <meta name="description" content="Learn more about Gladiator Dash, Still Creek Ranch, and One Army.">
+  <meta
+    name="description"
+    content="Learn more about Gladiator Dash, Still Creek Ranch, and One Army."
+  >
 
   <link rel="icon" href="media/shared/gladiator-white.png">
 
@@ -33,78 +36,119 @@
       border-bottom: none;
     }
 
+    /*
+      Wider than before so the text does not feel
+      cramped in the middle of the page.
+    */
     .about-content {
-      max-width: 980px;
+      width: 100%;
+      max-width: 1180px;
       margin: 0 auto;
     }
 
     .about-content h2 {
-      margin: 0 0 22px;
+      margin: 0 0 24px;
+
       color: #ffffff;
+
       font-family: "Archivo", sans-serif;
-      font-size: clamp(2rem, 4vw, 3.4rem);
+      font-size: clamp(2rem, 3.4vw, 3rem);
       font-weight: 800;
       line-height: 1;
-      letter-spacing: -0.04em;
+      letter-spacing: -0.035em;
       text-transform: uppercase;
     }
 
-    .about-content p {
-      margin: 0 0 18px;
-      color: #aebfd1;
-      font-size: 1.05rem;
-      line-height: 1.75;
+    .about-copy {
+      max-width: 1120px;
     }
 
-    .about-content a {
+    .about-copy p {
+      margin: 0 0 20px;
+
+      color: #b1c0d0;
+
+      font-family: "Archivo", sans-serif;
+      font-size: 1.08rem;
+      font-weight: 400;
+      line-height: 1.7;
+      letter-spacing: -0.01em;
+    }
+
+    .about-copy p:last-child {
+      margin-bottom: 0;
+    }
+
+    .about-copy a {
       color: #ffffff;
+      font-weight: 600;
       text-decoration: underline;
+      text-decoration-thickness: 1px;
       text-underline-offset: 4px;
     }
 
+    .about-copy a:hover {
+      opacity: 0.8;
+    }
+
+    /* =========================
+       IMAGES
+       ========================= */
+
     .about-image {
       width: 100%;
-      margin-top: 34px;
+      margin-top: 36px;
       overflow: hidden;
-      border: 1px solid rgba(105, 165, 215, 0.3);
+
       background: #101925;
-      aspect-ratio: 16 / 9;
+
+      border: 1px solid rgba(105, 165, 215, 0.3);
     }
 
     .about-image img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
+
       display: block;
     }
 
-    /* Slightly different framing for the Still Creek image */
-    .about-image--still-creek img {
-      object-position: center 55%;
+    /*
+      Still Creek photo is more square, so keep
+      it slightly narrower than the wide One Army image.
+    */
+    .about-image--still-creek {
+      max-width: 900px;
     }
 
-    /* One Army image already has a wide composition */
-    .about-image--one-army img {
-      object-position: center center;
+    .about-image--one-army {
+      max-width: 1180px;
     }
+
+    /* =========================
+       MOBILE
+       ========================= */
 
     @media (max-width: 760px) {
+
       .about-section {
         padding: 48px 0;
       }
 
       .about-content h2 {
+        margin-bottom: 18px;
         font-size: 2rem;
+        line-height: 1.05;
       }
 
-      .about-content p {
+      .about-copy p {
+        margin-bottom: 16px;
+
         font-size: 1rem;
         line-height: 1.65;
       }
 
       .about-image {
-        margin-top: 26px;
-        aspect-ratio: 4 / 3;
+        margin-top: 28px;
       }
     }
   </style>
@@ -116,17 +160,24 @@
     Skip to content
   </a>
 
+  <!-- =========================
+       HEADER
+       ========================= -->
+
   <header class="site-header">
     <div class="site-header__inner">
 
       <a class="site-header__brand" href="index.html">
+
         <img
           src="media/shared/gladiator-white.png"
           alt="Gladiator Dash"
           width="500"
           height="500"
         >
+
         <span>Home</span>
+
       </a>
 
       <button
@@ -208,7 +259,13 @@
     </div>
   </header>
 
+  <!-- =========================
+       MAIN
+       ========================= -->
+
   <main id="main">
+
+    <!-- PAGE HEADER -->
 
     <div class="page-head">
       <div class="wrap">
@@ -224,108 +281,163 @@
       </div>
     </div>
 
-    <!-- GLADIATOR DASH -->
+
+    <!-- =========================
+         GLADIATOR DASH
+         ========================= -->
+
     <section class="about-section">
+
       <div class="wrap">
+
         <div class="about-content">
 
           <h2>
             Gladiator Dash
           </h2>
 
-          <p>
-            Gladiator Dash is a 3.1 mile obstacle-integrated mud run and the
-            main philanthropy event of the Texas A&amp;M men's organization,
-            One Army. As Bryan-College Station's original obstacle-integrated
-            mud run, Gladiator Dash is definitely not just another 5K.
-            With challenging obstacles throughout the course, this race will
-            get you muddy and unleash your inner Gladiator.
-          </p>
+          <div class="about-copy">
 
-          <p>
-            Race Day includes live music, food trucks, and plenty of fun, so
-            feel free to come early and stay late! 100% of the proceeds from
-            Gladiator Dash benefit Still Creek Ranch, which is how we help
-            raise thousands of dollars for Still Creek Ranch each year.
-          </p>
+            <p>
+              Gladiator Dash is a 3.1-mile obstacle-integrated mud run
+              and the main philanthropy event of the Texas A&amp;M men's
+              organization, One Army. As Bryan-College Station's original
+              obstacle-integrated mud run, Gladiator Dash is definitely
+              not just another 5K. With challenging obstacles throughout
+              the course, this race will get you muddy and unleash your
+              inner Gladiator.
+            </p>
+
+            <p>
+              Race Day includes live music, food trucks, and plenty of fun,
+              so feel free to come early and stay late. 100% of the proceeds
+              from Gladiator Dash benefit Still Creek Ranch, helping One Army
+              continue raising funds and supporting the Ranch each year.
+            </p>
+
+          </div>
 
         </div>
+
       </div>
+
     </section>
 
-    <!-- STILL CREEK RANCH -->
+
+    <!-- =========================
+         STILL CREEK RANCH
+         ========================= -->
+
     <section class="about-section">
+
       <div class="wrap">
+
         <div class="about-content">
 
           <h2>
             Still Creek Ranch
           </h2>
 
-          <p>
-            Since 1988, Still Creek has rescued boys and girls from crisis
-            environments including abuse, neglect, abandonment, sex
-            trafficking, and restored their lives by placing them in a loving,
-            family-style home. Over the years One Army has had the privilege
-            to work with Still Creek by serving them in any way that we can:
-            from raising over $900,000 to spending time and forming
-            relationships with the kids.
-          </p>
+          <div class="about-copy">
 
-          <p>
-            To learn more about the amazing things they do at Still Creek
-            Ranch, visit
-            <a
-              href="https://stillcreekranch.org"
-              target="_blank"
-              rel="noopener"
-            >
-              stillcreekranch.org
-            </a>.
-          </p>
+            <p>
+              Since 1988, Still Creek has rescued boys and girls from crisis
+              environments including abuse, neglect, abandonment, and sex
+              trafficking, restoring their lives by placing them in a loving,
+              family-style home.
+            </p>
+
+            <p>
+              Over the years, One Army has had the privilege of working
+              alongside Still Creek Ranch by serving in any way we can —
+              from fundraising to spending time and building relationships
+              with the kids who call the Ranch home.
+            </p>
+
+            <p>
+              To learn more about the work being done at Still Creek Ranch,
+              visit
+              <a
+                href="https://stillcreekranch.org"
+                target="_blank"
+                rel="noopener"
+              >
+                stillcreekranch.org
+              </a>.
+            </p>
+
+          </div>
 
           <div class="about-image about-image--still-creek">
+
             <img
               src="media/about/still_creek_image.jpg"
-              alt="One Army members presenting a donation to Still Creek Ranch"
+              alt="One Army members presenting a Gladiator Dash donation to Still Creek Ranch"
             >
+
           </div>
 
         </div>
+
       </div>
+
     </section>
 
-    <!-- ONE ARMY -->
+
+    <!-- =========================
+         ONE ARMY
+         ========================= -->
+
     <section class="about-section">
+
       <div class="wrap">
+
         <div class="about-content">
 
           <h2>
             One Army | Texas Aggie Men United
           </h2>
 
-          <p>
-            One Army is a men's service and leadership organization at Texas
-            A&amp;M University which focuses on developing its members as
-            young men while giving back to our community. The One Army
-            mission is to develop its members as Aggies and leaders by serving
-            the campus and community and promoting unity in Aggieland.
-          </p>
+          <div class="about-copy">
+
+            <p>
+              One Army is a men's service and leadership organization at
+              Texas A&amp;M University focused on developing its members as
+              young men while giving back to the surrounding community.
+            </p>
+
+            <p>
+              The mission of One Army is to develop its members as Aggies
+              and leaders by serving the campus and community while promoting
+              unity throughout Aggieland.
+            </p>
+
+          </div>
 
           <div class="about-image about-image--one-army">
+
             <img
-              src="media/about/one_army_members.jpg.jpg"
-              alt="One Army members at Texas A&M University"
+              src="media/about/one_army_members.jpeg"
+              alt="Members of One Army at Texas A&M University"
             >
+
           </div>
 
         </div>
+
       </div>
+
     </section>
 
   </main>
 
+
+  <!-- =========================
+       FOOTER
+       ========================= -->
+
   <footer class="site-footer">
+
     <div class="site-footer__inner">
 
       <div class="site-footer__brand">
@@ -338,14 +450,17 @@
         >
 
         <p class="site-footer__tagline">
+
           <strong>
             Run by One Army.
           </strong>
 
           Every dollar raised goes to Still Creek Ranch.
+
         </p>
 
       </div>
+
 
       <nav
         class="site-footer__nav"
@@ -382,6 +497,7 @@
 
         </ul>
 
+
         <ul>
 
           <li>
@@ -412,6 +528,7 @@
 
       </nav>
 
+
       <div class="site-footer__contact">
 
         <h2>
@@ -441,11 +558,15 @@
 
     </div>
 
+
     <div class="site-footer__legal">
+
       <p>
         &copy; <span data-year></span> One Army
       </p>
+
     </div>
+
   </footer>
 
   <script src="assets/nav.js"></script>
