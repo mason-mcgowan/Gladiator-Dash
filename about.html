@@ -28,113 +28,165 @@
        ========================= */
 
     .about-section {
-      padding: 72px 0;
-      border-bottom: 1px solid rgba(105, 165, 215, 0.28);
+      padding: 80px 0;
+      border-bottom: 1px solid rgba(105, 165, 215, 0.22);
     }
 
     .about-section:last-child {
       border-bottom: none;
     }
 
-    .about-content {
-      width: 100%;
-      max-width: 100%;
-      margin: 0;
+    .about-intro {
+      max-width: 1180px;
+      margin: 0 auto;
     }
 
-    .about-content h2 {
-      margin: 0 0 22px;
+    .about-intro h2,
+    .about-split__text h2 {
+      margin: 0 0 20px;
+
       color: #ffffff;
+
       font-family: "Archivo", sans-serif;
-      font-size: clamp(2rem, 3vw, 2.8rem);
+      font-size: clamp(2rem, 3vw, 3rem);
       font-weight: 800;
       line-height: 1;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.035em;
       text-transform: uppercase;
     }
 
-    .about-copy {
-      width: 100%;
-      max-width: 100%;
-    }
+    .about-intro p,
+    .about-split__text p {
+      margin: 0 0 18px;
 
-    .about-copy p {
-      margin: 0 0 20px;
-      color: #b1c0d0;
+      color: #b3c1cf;
+
       font-family: "Archivo", sans-serif;
       font-size: 1.05rem;
       font-weight: 400;
-      line-height: 1.75;
-      letter-spacing: -0.01em;
-      text-align: left;
+      line-height: 1.72;
     }
 
-    .about-copy p:last-child {
+    .about-intro p:last-child,
+    .about-split__text p:last-child {
       margin-bottom: 0;
     }
 
-    .about-copy a {
+    .about-intro {
+      max-width: 1100px;
+    }
+
+    .about-split {
+      max-width: 1180px;
+      margin: 0 auto;
+
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(340px, 0.95fr);
+      gap: 54px;
+      align-items: center;
+    }
+
+    .about-split--reverse {
+      grid-template-columns: minmax(340px, 0.95fr) minmax(0, 1.05fr);
+    }
+
+    .about-split__text {
+      min-width: 0;
+    }
+
+    .about-split__image {
+      width: 100%;
+      overflow: hidden;
+
+      border: 1px solid rgba(105, 165, 215, 0.28);
+      background: #101925;
+    }
+
+    .about-split__image img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* Still Creek is more square */
+    .about-split__image--still {
+      aspect-ratio: 4 / 3;
+      max-width: 500px;
+      justify-self: end;
+    }
+
+    .about-split__image--still img {
+      object-position: center center;
+    }
+
+    /* One Army is naturally wide */
+    .about-split__image--army {
+      aspect-ratio: 16 / 10;
+      max-width: 560px;
+      justify-self: start;
+    }
+
+    .about-split__image--army img {
+      object-position: center center;
+    }
+
+    .about-copy-link {
       color: #ffffff;
       font-weight: 600;
       text-decoration: underline;
       text-underline-offset: 4px;
     }
 
-    .about-copy a:hover {
-      opacity: 0.85;
+    .about-copy-link:hover {
+      opacity: 0.8;
     }
 
-    /* =========================
-       IMAGES
-       ========================= */
-
-    .about-image {
-      margin-top: 30px;
-      border: 1px solid rgba(105, 165, 215, 0.3);
-      background: #101925;
-      overflow: hidden;
-    }
-
-    .about-image img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    /* Make images smaller */
-    .about-image--still-creek {
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .about-image--one-army {
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    @media (max-width: 760px) {
+    @media (max-width: 900px) {
       .about-section {
-        padding: 48px 0;
+        padding: 58px 0;
       }
 
-      .about-content h2 {
-        font-size: 2rem;
+      .about-split,
+      .about-split--reverse {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .about-split__image--still,
+      .about-split__image--army {
+        max-width: 680px;
+        justify-self: start;
+      }
+
+      .about-split--reverse .about-split__image {
+        order: 2;
+      }
+
+      .about-split--reverse .about-split__text {
+        order: 1;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .about-section {
+        padding: 44px 0;
+      }
+
+      .about-intro h2,
+      .about-split__text h2 {
         margin-bottom: 16px;
+        font-size: 2rem;
       }
 
-      .about-copy p {
+      .about-intro p,
+      .about-split__text p {
         font-size: 1rem;
         line-height: 1.65;
       }
 
-      .about-image {
-        margin-top: 24px;
-      }
-
-      .about-image--still-creek,
-      .about-image--one-army {
+      .about-split__image--still,
+      .about-split__image--army {
         max-width: 100%;
       }
     }
@@ -143,7 +195,9 @@
 
 <body>
 
-  <a class="skip-link" href="#main">Skip to content</a>
+  <a class="skip-link" href="#main">
+    Skip to content
+  </a>
 
   <header class="site-header">
     <div class="site-header__inner">
@@ -165,18 +219,60 @@
         aria-expanded="false"
         aria-controls="site-nav"
       >
-        <span></span><span></span><span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
 
-      <nav class="site-nav" id="site-nav" aria-label="Main">
+      <nav
+        class="site-nav"
+        id="site-nav"
+        aria-label="Main"
+      >
         <ul class="site-nav__list">
-          <li><a href="obstacles.html">Obstacles</a></li>
-          <li><a href="about.html" aria-current="page">About</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-          <li><a href="sponsors.html">Sponsors</a></li>
-          <li><a href="mercuria.html">Mercuria</a></li>
-          <li><a href="raffle.html">Raffle</a></li>
-          <li><a href="giveback.html">Giveback</a></li>
+
+          <li>
+            <a href="obstacles.html">
+              Obstacles
+            </a>
+          </li>
+
+          <li>
+            <a href="about.html" aria-current="page">
+              About
+            </a>
+          </li>
+
+          <li>
+            <a href="faq.html">
+              FAQ
+            </a>
+          </li>
+
+          <li>
+            <a href="sponsors.html">
+              Sponsors
+            </a>
+          </li>
+
+          <li>
+            <a href="mercuria.html">
+              Mercuria
+            </a>
+          </li>
+
+          <li>
+            <a href="raffle.html">
+              Raffle
+            </a>
+          </li>
+
+          <li>
+            <a href="giveback.html">
+              Giveback
+            </a>
+          </li>
+
         </ul>
 
         <a
@@ -194,136 +290,261 @@
 
     <div class="page-head">
       <div class="wrap">
-        <h1>About</h1>
-        <p>One Army and Still Creek Ranch</p>
+
+        <h1>
+          About
+        </h1>
+
+        <p>
+          One Army and Still Creek Ranch
+        </p>
+
       </div>
     </div>
+
 
     <!-- GLADIATOR DASH -->
     <section class="about-section">
       <div class="wrap">
-        <div class="about-content">
-          <h2>Gladiator Dash</h2>
 
-          <div class="about-copy">
-            <p>
-              Gladiator Dash is a 3.1-mile obstacle-integrated mud run and the main philanthropy event of the Texas A&amp;M men's organization, One Army. As Bryan-College Station's original obstacle-integrated mud run, Gladiator Dash is definitely not just another 5K. With challenging obstacles throughout the course, this race will get you muddy and unleash your inner Gladiator.
-            </p>
+        <div class="about-intro">
 
-            <p>
-              Race Day includes live music, food trucks, and plenty of fun, so feel free to come early and stay late. 100% of the proceeds from Gladiator Dash benefit Still Creek Ranch, helping One Army continue making a real impact each year.
-            </p>
-          </div>
+          <h2>
+            Gladiator Dash
+          </h2>
+
+          <p>
+            Gladiator Dash is a 3.1-mile obstacle-integrated mud run and the
+            main philanthropy event of the Texas A&amp;M men's organization,
+            One Army. As Bryan-College Station's original obstacle-integrated
+            mud run, Gladiator Dash is definitely not just another 5K.
+            With challenging obstacles throughout the course, this race will
+            get you muddy and unleash your inner Gladiator.
+          </p>
+
+          <p>
+            Race Day includes live music, food trucks, and plenty of fun, so
+            feel free to come early and stay late. 100% of the proceeds from
+            Gladiator Dash benefit Still Creek Ranch, helping One Army continue
+            making a meaningful impact year after year.
+          </p>
+
         </div>
+
       </div>
     </section>
+
 
     <!-- STILL CREEK RANCH -->
     <section class="about-section">
       <div class="wrap">
-        <div class="about-content">
-          <h2>Still Creek Ranch</h2>
 
-          <div class="about-copy">
+        <div class="about-split">
+
+          <div class="about-split__text">
+
+            <h2>
+              Still Creek Ranch
+            </h2>
+
             <p>
-              Since 1988, Still Creek has rescued boys and girls from crisis environments including abuse, neglect, abandonment, and sex trafficking, restoring their lives by placing them in a loving, family-style home.
+              Since 1988, Still Creek has rescued boys and girls from crisis
+              environments including abuse, neglect, abandonment, and sex
+              trafficking, restoring their lives by placing them in a loving,
+              family-style home.
             </p>
 
             <p>
-              Over the years, One Army has had the privilege of serving Still Creek Ranch in any way possible — from raising over $1.3 million to spending time with the kids and building meaningful relationships with them.
+              Over the years, One Army has had the privilege of serving Still
+              Creek Ranch in any way possible — from raising over $1.3 million
+              to spending time with the kids and building meaningful
+              relationships with them.
             </p>
 
             <p>
-              To learn more about the work being done at Still Creek Ranch, visit
-              <a href="https://stillcreekranch.org" target="_blank" rel="noopener">
+              To learn more about the work being done at Still Creek Ranch,
+              visit
+              <a
+                class="about-copy-link"
+                href="https://stillcreekranch.org"
+                target="_blank"
+                rel="noopener"
+              >
                 stillcreekranch.org
               </a>.
             </p>
+
           </div>
 
-          <div class="about-image about-image--still-creek">
+          <div class="about-split__image about-split__image--still">
             <img
               src="media/about/still_creek_image.jpg"
               alt="One Army members presenting a donation to Still Creek Ranch"
             >
           </div>
+
         </div>
+
       </div>
     </section>
+
 
     <!-- ONE ARMY -->
     <section class="about-section">
       <div class="wrap">
-        <div class="about-content">
-          <h2>One Army | Texas Aggie Men United</h2>
 
-          <div class="about-copy">
-            <p>
-              One Army is a men's service and leadership organization at Texas A&amp;M University focused on developing its members as young men while giving back to the surrounding community.
-            </p>
+        <div class="about-split about-split--reverse">
 
-            <p>
-              The mission of One Army is to develop its members as Aggies and leaders by serving the campus and community while promoting unity throughout Aggieland.
-            </p>
-          </div>
-
-          <div class="about-image about-image--one-army">
+          <div class="about-split__image about-split__image--army">
             <img
               src="media/about/one_army_members.jpeg"
               alt="Members of One Army at Texas A&M University"
             >
           </div>
+
+          <div class="about-split__text">
+
+            <h2>
+              One Army | Texas Aggie Men United
+            </h2>
+
+            <p>
+              One Army is a men's service and leadership organization at
+              Texas A&amp;M University focused on developing its members as
+              young men while giving back to the surrounding community.
+            </p>
+
+            <p>
+              The mission of One Army is to develop its members as Aggies
+              and leaders by serving the campus and community while promoting
+              unity throughout Aggieland.
+            </p>
+
+          </div>
+
         </div>
+
       </div>
     </section>
 
   </main>
 
+
   <footer class="site-footer">
     <div class="site-footer__inner">
 
       <div class="site-footer__brand">
+
         <img
           src="media/shared/gladiator-white.png"
           alt="Gladiator Dash"
           width="500"
           height="500"
         >
+
         <p class="site-footer__tagline">
-          <strong>Run by One Army.</strong>
+          <strong>
+            Run by One Army.
+          </strong>
           Every dollar raised goes to Still Creek Ranch.
         </p>
+
       </div>
 
       <nav class="site-footer__nav" aria-label="Footer">
+
         <ul>
-          <li><a href="https://www.zeffy.com/en-US/ticketing/gladiator-dash--2027">Register</a></li>
-          <li><a href="obstacles.html">Obstacles</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-          <li><a href="about.html">About</a></li>
+          <li>
+            <a href="https://www.zeffy.com/en-US/ticketing/gladiator-dash--2027">
+              Register
+            </a>
+          </li>
+
+          <li>
+            <a href="obstacles.html">
+              Obstacles
+            </a>
+          </li>
+
+          <li>
+            <a href="faq.html">
+              FAQ
+            </a>
+          </li>
+
+          <li>
+            <a href="about.html">
+              About
+            </a>
+          </li>
         </ul>
+
         <ul>
-          <li><a href="sponsors.html">Sponsors</a></li>
-          <li><a href="mercuria.html">Mercuria</a></li>
-          <li><a href="raffle.html">Raffle</a></li>
-          <li><a href="giveback.html">Giveback</a></li>
+          <li>
+            <a href="sponsors.html">
+              Sponsors
+            </a>
+          </li>
+
+          <li>
+            <a href="mercuria.html">
+              Mercuria
+            </a>
+          </li>
+
+          <li>
+            <a href="raffle.html">
+              Raffle
+            </a>
+          </li>
+
+          <li>
+            <a href="giveback.html">
+              Giveback
+            </a>
+          </li>
         </ul>
+
       </nav>
 
       <div class="site-footer__contact">
-        <h2>Questions</h2>
-        <p><a href="mailto:onearmy.philanthropy@gmail.com">onearmy.philanthropy@gmail.com</a></p>
-        <p><a href="https://www.instagram.com/gladiatordash/" rel="noopener">Instagram</a></p>
-        <p>Lake Bryan, Bryan, Texas</p>
+
+        <h2>
+          Questions
+        </h2>
+
+        <p>
+          <a href="mailto:onearmy.philanthropy@gmail.com">
+            onearmy.philanthropy@gmail.com
+          </a>
+        </p>
+
+        <p>
+          <a
+            href="https://www.instagram.com/gladiatordash/"
+            rel="noopener"
+          >
+            Instagram
+          </a>
+        </p>
+
+        <p>
+          Lake Bryan, Bryan, Texas
+        </p>
+
       </div>
 
     </div>
 
     <div class="site-footer__legal">
-      <p>&copy; <span data-year></span> One Army</p>
+      <p>
+        &copy; <span data-year></span> One Army
+      </p>
     </div>
+
   </footer>
 
   <script src="assets/nav.js"></script>
+
 </body>
 </html>
