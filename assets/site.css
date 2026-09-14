@@ -234,6 +234,120 @@ ul, ol { margin: 0 0 var(--sp-4); padding-left: var(--sp-6); }
 .section { padding: var(--sp-24) 0; }
 .stub { border: 2px dashed var(--navy-line); padding: var(--sp-16); color: var(--steel); }
 
+/* ============ Sponsors — the logo wall ============ */
+/* Logos rest as grayscale marks on black. Hover or keyboard focus drops a plate behind the
+   tile (white, or navy for logos drawn in white) and lets the sponsor's own colors through.
+   Linked sponsors also lift, flash a name tag and offer "Visit site". Family names invert. */
+
+/* overflow-x: clip keeps a long pop-out name tag from widening the page; tags still rise above the row. */
+.sponsor-tier { padding: var(--sp-16) 0; border-bottom: 3px solid var(--navy-line); overflow-x: clip; }
+.sponsor-tier:nth-of-type(even) { background: var(--ink); }
+.sponsor-tier__head {
+  display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between;
+  gap: var(--sp-2) var(--sp-6); margin-bottom: var(--sp-12);
+}
+.sponsor-tier__head h2 { margin: 0; }
+.sponsor-tier__count {
+  margin: 0; color: var(--steel); font-size: var(--fs-sm);
+  text-transform: uppercase; letter-spacing: .08em;
+  font-variation-settings: "wdth" 110, "wght" 600;
+}
+
+/* Rules are the grid showing through 2px gaps; every tier has an even count so rows fill. */
+.sponsor-grid {
+  --cols: 4; --tile-h: 190px; --logo-w: 230px; --logo-h: 92px;
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+  gap: 2px; background: var(--navy-line); border: 2px solid var(--navy-line);
+}
+.sponsor-grid--title  { --cols: 2; --tile-h: clamp(220px, 22vw, 300px); --logo-w: 440px; --logo-h: 150px; }
+.sponsor-grid--silver { --tile-h: 170px; --logo-w: 220px; --logo-h: 88px; }
+.sponsor-grid--bronze { --cols: 8; --tile-h: 132px; --logo-w: 132px; --logo-h: 60px; }
+.sponsor-grid > li { display: flex; min-width: 0; }
+
+.sponsor {
+  position: relative; flex: 1; min-width: 0; min-height: var(--tile-h);
+  display: grid; place-items: center; padding: var(--sp-6) var(--sp-4);
+  background: var(--ink); color: var(--steel); text-decoration: none;
+  transition: background-color .18s cubic-bezier(.23,1,.32,1), color .18s cubic-bezier(.23,1,.32,1), transform .18s cubic-bezier(.23,1,.32,1);
+}
+.sponsor__logo {
+  width: auto; height: auto; max-width: min(100%, var(--logo-w)); max-height: var(--logo-h);
+  object-fit: contain; opacity: .72;
+  filter: grayscale(1) invert(0);
+  transition: filter .18s cubic-bezier(.23,1,.32,1), opacity .18s cubic-bezier(.23,1,.32,1);
+}
+.sponsor__logo--invert { filter: grayscale(1) invert(1); }
+
+.sponsor:hover, .sponsor:focus-visible { background: var(--white); color: var(--ink); z-index: 2; }
+.sponsor:focus-visible { outline: 3px solid var(--ink); outline-offset: -9px; }
+.sponsor--plate-dark:hover, .sponsor--plate-dark:focus-visible {
+  background: var(--navy); color: var(--white);
+  outline: 3px solid var(--white); outline-offset: -3px;
+}
+.sponsor:hover .sponsor__logo, .sponsor:focus-visible .sponsor__logo { filter: grayscale(0) invert(0); opacity: 1; }
+
+.sponsor--name {
+  font-size: var(--fs-lg); line-height: 1.1; text-align: center;
+  text-transform: uppercase; letter-spacing: .02em;
+  font-variation-settings: "wdth" 118, "wght" 700;
+}
+
+.sponsor__role, .sponsor__cta {
+  position: absolute; bottom: var(--sp-3);
+  font-size: .75rem; line-height: 1; color: inherit;
+  text-transform: uppercase; letter-spacing: .08em;
+  font-variation-settings: "wdth" 118, "wght" 700;
+}
+.sponsor__role { left: var(--sp-4); }
+.sponsor__cta {
+  right: var(--sp-4); opacity: 0; transform: translateY(4px);
+  transition: opacity .18s cubic-bezier(.23,1,.32,1), transform .18s cubic-bezier(.23,1,.32,1);
+}
+a.sponsor:hover .sponsor__cta, a.sponsor:focus-visible .sponsor__cta { opacity: 1; transform: none; }
+
+/* The name tag and the lift only exist where there is a real pointer. */
+.sponsor__tag {
+  display: none;
+  position: absolute; left: var(--sp-4); top: 0; z-index: 1;
+  padding: var(--sp-1) var(--sp-3);
+  background: var(--ink); color: var(--white); border: 2px solid var(--white);
+  font-size: .8125rem; line-height: 1.2; white-space: nowrap;
+  text-transform: uppercase; letter-spacing: .06em;
+  font-variation-settings: "wdth" 122, "wght" 800;
+  transform-origin: left bottom;
+  transform: translateY(-50%) rotate(-6deg) scale(.95);
+  opacity: 0; filter: blur(4px); pointer-events: none;
+  transition: opacity .16s cubic-bezier(.23,1,.32,1), transform .16s cubic-bezier(.23,1,.32,1), filter .16s cubic-bezier(.23,1,.32,1);
+}
+@media (hover: hover) and (pointer: fine) {
+  .sponsor__tag { display: block; }
+  a.sponsor:hover, a.sponsor:focus-visible { transform: translateY(-4px); }
+  a.sponsor:hover .sponsor__tag, a.sponsor:focus-visible .sponsor__tag {
+    opacity: 1; filter: blur(0); transform: translateY(-80%) rotate(-6deg) scale(1);
+  }
+}
+/* On touch screens there is no hover, so say up front that the tile opens the site. */
+@media (hover: none) { a.sponsor .sponsor__cta { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  a.sponsor:hover, a.sponsor:focus-visible { transform: none; }
+  .sponsor__tag, a.sponsor:hover .sponsor__tag, a.sponsor:focus-visible .sponsor__tag {
+    transform: translateY(-80%) rotate(-6deg); filter: none;
+  }
+}
+
+@media (max-width: 1200px) { .sponsor-grid--bronze { --cols: 4; } }
+@media (max-width: 900px) {
+  .sponsor-grid { --cols: 2; }
+  .sponsor-grid--bronze { --cols: 4; }
+}
+@media (max-width: 560px) {
+  .sponsor-tier { padding: var(--sp-12) 0; }
+  .sponsor-grid--title { --cols: 1; }
+  .sponsor-grid--bronze { --cols: 2; --tile-h: 120px; }
+  .sponsor--name { font-size: var(--fs-base); }
+}
+
 /* ============ Home: video hero ============ */
 
 .home-hero {
