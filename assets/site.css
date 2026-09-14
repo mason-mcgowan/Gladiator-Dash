@@ -582,6 +582,68 @@ a.sponsor:hover .sponsor__cta, a.sponsor:focus-visible .sponsor__cta { opacity: 
 .site-footer__legal { border-top: 1px solid var(--navy-line); padding: var(--sp-6); text-align: center; color: var(--navy-edge); font-size: .8125rem; text-transform: uppercase; letter-spacing: .08em; }
 .site-footer__legal p { margin: 0; max-width: none; }
 
+/* Sponsor strip at the top of the footer: Title, Arena and Gold logos on a 30s loop.
+   The logo set is written twice; sliding the track -50% lands copy two where copy one began,
+   which only works because every item carries the same right margin (not a flex gap). */
+.site-footer__sponsors { border-bottom: 3px solid var(--navy-line); }
+.logo-marquee {
+  display: grid; grid-template-columns: 1fr auto; align-items: baseline;
+  gap: var(--sp-6);
+  max-width: var(--wrap); margin-inline: auto; padding: var(--sp-8) var(--sp-6);
+  text-decoration: none;
+}
+.logo-marquee__label, .logo-marquee__cta {
+  font-size: var(--fs-sm); line-height: 1; text-transform: uppercase; letter-spacing: .08em;
+  font-variation-settings: "wdth" 110, "wght" 700;
+}
+.logo-marquee__label { color: var(--white); }
+.logo-marquee__cta { color: var(--steel); transition: color .18s cubic-bezier(.23,1,.32,1); }
+.logo-marquee:hover .logo-marquee__cta, .logo-marquee:focus-visible .logo-marquee__cta { color: var(--white); }
+
+/* The mask only reads alpha, so the ink token stands in for the reference's #000. */
+.logo-marquee__viewport {
+  grid-column: 1 / -1; overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, var(--ink) 8%, var(--ink) 92%, transparent);
+          mask-image: linear-gradient(90deg, transparent, var(--ink) 8%, var(--ink) 92%, transparent);
+}
+.logo-marquee__track { display: flex; width: max-content; animation: logo-marquee 30s linear infinite; }
+.logo-marquee:hover .logo-marquee__track,
+.logo-marquee:focus-visible .logo-marquee__track { animation-play-state: paused; }
+@keyframes logo-marquee { to { transform: translateX(-50%); } }
+
+.logo-marquee__group { display: flex; align-items: center; }
+.logo-marquee__item {
+  display: flex; align-items: center;
+  margin-right: 56px; padding: var(--sp-2) var(--sp-3);
+  background: transparent; transition: background-color .18s cubic-bezier(.23,1,.32,1);
+}
+.logo-marquee__logo {
+  width: auto; height: auto; max-width: 140px; max-height: 52px; /* fit a box, so wide and square logos read at a similar size */
+  opacity: .8; filter: grayscale(1) invert(0);
+  transition: filter .18s cubic-bezier(.23,1,.32,1), opacity .18s cubic-bezier(.23,1,.32,1);
+}
+.logo-marquee__logo--invert { filter: grayscale(1) invert(1); }
+/* Same reveal as the Sponsors page: a white plate, then the sponsor's own colors. */
+.logo-marquee__item:hover { background: var(--white); }
+.logo-marquee__item:hover .logo-marquee__logo { filter: grayscale(0) invert(0); opacity: 1; }
+
+@media (max-width: 560px) {
+  .logo-marquee__logo { max-width: 104px; max-height: 38px; }
+  .logo-marquee__item { margin-right: 36px; }
+  .logo-marquee__viewport {
+    -webkit-mask-image: linear-gradient(90deg, transparent, var(--ink) 12%, var(--ink) 88%, transparent);
+            mask-image: linear-gradient(90deg, transparent, var(--ink) 12%, var(--ink) 88%, transparent);
+  }
+}
+/* Without motion: one still, centered row of the ten logos. */
+@media (prefers-reduced-motion: reduce) {
+  .logo-marquee__track { animation: none; width: auto; }
+  .logo-marquee__group { flex-wrap: wrap; justify-content: center; row-gap: var(--sp-4); width: 100%; }
+  .logo-marquee__group[aria-hidden="true"] { display: none; }
+  .logo-marquee__item { margin-inline: 28px; }
+  .logo-marquee__viewport { -webkit-mask-image: none; mask-image: none; }
+}
+
 
 /* ============ About: editorial layout ============ */
 body[data-page="about"]::after { display: none; }
