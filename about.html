@@ -23,181 +23,10 @@
 
   <link rel="stylesheet" href="assets/site.css">
 
-  <style>
 
-    /* =========================
-       ABOUT PAGE
-       ========================= */
-
-    .about-section {
-      padding: 76px 0;
-      border-bottom: 1px solid rgba(105, 165, 215, 0.22);
-    }
-
-    .about-section:last-child {
-      border-bottom: none;
-    }
-
-    /* Every section now begins at the exact same left edge */
-    .about-content {
-      width: 100%;
-      margin: 0;
-    }
-
-    .about-title {
-      margin: 0 0 22px;
-
-      color: #ffffff;
-
-      font-family: "Archivo", sans-serif;
-      font-size: clamp(2rem, 3vw, 3rem);
-      font-weight: 800;
-      line-height: 1;
-      letter-spacing: -0.035em;
-      text-transform: uppercase;
-    }
-
-    .about-text p {
-      margin: 0 0 18px;
-
-      color: #b3c1cf;
-
-      font-family: "Archivo", sans-serif;
-      font-size: 1.05rem;
-      font-weight: 400;
-      line-height: 1.72;
-    }
-
-    .about-text p:last-child {
-      margin-bottom: 0;
-    }
-
-    /* =========================
-       GLADIATOR DASH
-       ========================= */
-
-    .about-intro .about-text {
-      width: 100%;
-    }
-
-    /* =========================
-       IMAGE + TEXT SECTIONS
-       ========================= */
-
-    .about-row {
-      width: 100%;
-
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 420px;
-      gap: 60px;
-      align-items: center;
-    }
-
-    .about-row__text {
-      min-width: 0;
-    }
-
-    .about-row__image {
-      width: 100%;
-      overflow: hidden;
-
-      border: 1px solid rgba(105, 165, 215, 0.28);
-      background: #101925;
-    }
-
-    .about-row__image img {
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: cover;
-    }
-
-    /* Still Creek image */
-    .about-row__image--still {
-      aspect-ratio: 4 / 3;
-    }
-
-    .about-row__image--still img {
-      object-position: center center;
-    }
-
-    /* One Army image */
-    .about-row__image--army {
-      aspect-ratio: 4 / 3;
-    }
-
-    .about-row__image--army img {
-      object-position: center center;
-    }
-
-    /* =========================
-       LINKS
-       ========================= */
-
-    .about-link {
-      color: #ffffff;
-      font-weight: 600;
-      text-decoration: underline;
-      text-underline-offset: 4px;
-    }
-
-    .about-link:hover {
-      opacity: 0.8;
-    }
-
-    /* =========================
-       TABLET
-       ========================= */
-
-    @media (max-width: 900px) {
-
-      .about-section {
-        padding: 56px 0;
-      }
-
-      .about-row {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
-
-      .about-row__image {
-        max-width: 620px;
-      }
-    }
-
-    /* =========================
-       MOBILE
-       ========================= */
-
-    @media (max-width: 600px) {
-
-      .about-section {
-        padding: 44px 0;
-      }
-
-      .about-title {
-        margin-bottom: 16px;
-        font-size: 2rem;
-      }
-
-      .about-text p {
-        font-size: 1rem;
-        line-height: 1.65;
-      }
-
-      .about-row {
-        gap: 26px;
-      }
-
-      .about-row__image {
-        max-width: 100%;
-      }
-    }
-
-  </style>
 </head>
 
-<body>
+<body data-page="about">
 
   <a class="skip-link" href="#main">
     Skip to content
@@ -346,18 +175,18 @@
           <div class="about-text">
 
             <p>
-              Gladiator Dash is a 3.1-mile obstacle-integrated mud run and the
+              Gladiator Dash is a <strong>3.1-mile obstacle-integrated mud run</strong> and the
               main philanthropy event of the Texas A&amp;M men's organization,
               One Army. As Bryan-College Station's original obstacle-integrated
               mud run, Gladiator Dash is definitely not just another 5K. With
               challenging obstacles throughout the course, this race will get
-              you muddy and unleash your inner Gladiator.
+              you muddy and <strong>unleash your inner Gladiator.</strong>
             </p>
 
             <p>
               Race Day includes live music, food trucks, and plenty of fun, so
-              feel free to come early and stay late. 100% of the proceeds from
-              Gladiator Dash benefit Still Creek Ranch, helping One Army continue
+              feel free to come early and stay late. <strong>100% of the proceeds from
+              Gladiator Dash benefit Still Creek Ranch</strong>, helping One Army continue
               making a meaningful impact year after year.
             </p>
 
@@ -380,13 +209,11 @@
 
         <div class="about-content">
 
+          <h2 class="about-title">Still Creek Ranch</h2>
+
           <div class="about-row">
 
             <div class="about-row__text">
-
-              <h2 class="about-title">
-                Still Creek Ranch
-              </h2>
 
               <div class="about-text">
 
@@ -425,6 +252,7 @@
             <div class="about-row__image about-row__image--still">
 
               <img
+                loading="lazy"
                 src="media/about/still_creek_image.jpg"
                 alt="One Army members presenting a donation to Still Creek Ranch"
               >
@@ -450,13 +278,11 @@
 
         <div class="about-content">
 
-          <div class="about-row">
+          <h2 class="about-title">One Army <span>Texas Aggie Men United</span></h2>
+
+          <div class="about-row about-row--image-left">
 
             <div class="about-row__text">
-
-              <h2 class="about-title">
-                One Army | Texas Aggie Men United
-              </h2>
 
               <div class="about-text">
 
@@ -480,6 +306,7 @@
             <div class="about-row__image about-row__image--army">
 
               <img
+                loading="lazy"
                 src="media/about/one_army_members.jpeg"
                 alt="Members of One Army at Texas A&M University"
               >
