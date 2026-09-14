@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
   <link rel="stylesheet" href="assets/site.css">
 </head>
-<body>
+<body data-page="giveback">
 
   <a class="skip-link" href="#main">Skip to content</a>
 
@@ -47,17 +47,209 @@
 
   <main id="main">
 
-    <div class="page-head">
-      <div class="wrap">
-        <h1>Giveback</h1>
-        <p>Win $1,000 for your organization</p>
+    <!-- Hero: scope reveal (performativeUI "Goldeneye", made square). The base layer says $1,000;
+         a square lens that follows a mouse flips to white and reveals "Your organization".
+         Both layers are decorative; the real headline is the <h1> below the field.
+         Touch screens get the base layer only. -->
+    <section class="gb-hero" aria-labelledby="gb-title">
+      <div class="gb-hero__field" data-scope data-scope-pattern="GREEK LIFE · CORPS OUTFITS · SERVICE ORGS · LEADERSHIP ORGS · ">
+        <div class="gb-hero__layer gb-hero__layer--base" aria-hidden="true">
+          <div class="gb-hero__pattern" data-scope-rows></div>
+          <p class="gb-hero__word">$1,000</p>
+        </div>
+        <div class="gb-hero__layer gb-hero__layer--lens" aria-hidden="true" data-scope-lens>
+          <div class="gb-hero__pattern gb-hero__pattern--lens" data-scope-rows></div>
+          <p class="gb-hero__word gb-hero__word--reveal">Your organization</p>
+        </div>
+        <div class="gb-hero__reticle" aria-hidden="true" data-scope-reticle></div>
       </div>
-    </div>
 
-    <section class="section">
+      <div class="wrap gb-hero__bar">
+        <div>
+          <p class="live-flag"><span class="live-flag__mark" aria-hidden="true"></span>Team sign-ups are open</p>
+          <h1 class="gb-hero__title" id="gb-title">$1,000 for your organization</h1>
+          <p class="gb-hero__lede">Most sign-ups with an organization’s team name in each category wins $1,000 for their philanthropy.</p>
+        </div>
+        <div class="btn-row">
+          <a class="btn btn--primary btn--lg" href="https://www.zeffy.com/en-US/ticketing/gladiator-dash--2027">Register your team</a>
+          <a class="btn btn--ghost btn--lg" href="#how-it-works">How it works</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Word roll (performativeUI "WordRoll"). Screen readers get the full list once. -->
+    <section class="band gb-roll" aria-label="Who can win">
       <div class="wrap">
-        <!-- TODO: Giveback content -->
-        <div class="stub">No content yet.</div>
+        <p class="gb-roll__line">
+          <span class="gb-roll__muted">One team name. Every member signs up.</span>
+          $1,000 for your
+          <span class="sr-only">fraternity, sorority, Corps outfit, service organization, leadership organization or religious group.</span>
+          <span class="word-roll" data-word-roll aria-hidden="true">
+            <span class="word-roll__word is-active">fraternity</span>
+            <span class="word-roll__word">sorority</span>
+            <span class="word-roll__word">Corps outfit</span>
+            <span class="word-roll__word">service org</span>
+            <span class="word-roll__word">leadership org</span>
+            <span class="word-roll__word">religious group</span>
+          </span>
+        </p>
+      </div>
+    </section>
+
+    <section class="band band--ink" aria-label="The prize">
+      <div class="wrap">
+        <dl class="gb-stats">
+          <div class="gb-stat">
+            <dt>In prizes for student philanthropies</dt>
+            <dd><span class="sr-only">$4,000</span><span aria-hidden="true" data-count-to="4000" data-count-prefix="$">$4,000</span></dd>
+          </div>
+          <div class="gb-stat">
+            <dt>Categories, one winner each</dt>
+            <dd>4</dd>
+          </div>
+          <div class="gb-stat">
+            <dt>Team name is all it takes</dt>
+            <dd>1</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="band anchor-target" id="how-it-works" aria-labelledby="gb-how">
+      <div class="wrap">
+        <div class="band__head">
+          <p class="eyebrow">How it works</p>
+          <h2 id="gb-how">Three steps to $1,000</h2>
+        </div>
+        <ol class="gb-steps">
+          <li class="gb-step">
+            <span class="gb-step__num" aria-hidden="true">1</span>
+            <h3>Pick one team name</h3>
+            <p>Choose a name your whole organization will recognize. Keep it simple so nobody spells it differently.</p>
+          </li>
+          <li class="gb-step">
+            <span class="gb-step__num" aria-hidden="true">2</span>
+            <h3>Everyone registers under it</h3>
+            <p>When members sign up for Gladiator Dash, they enter that exact team name during registration.</p>
+            <p class="gb-example"><span>Team name</span><strong>Your org name</strong></p>
+          </li>
+          <li class="gb-step">
+            <span class="gb-step__num" aria-hidden="true">3</span>
+            <h3>Most sign-ups wins</h3>
+            <p>The organization with the most runners registered under its team name in each category wins $1,000 for its philanthropy.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="band band--ink" aria-labelledby="gb-categories">
+      <div class="wrap">
+        <div class="band__head">
+          <p class="eyebrow">The four categories</p>
+          <h2 id="gb-categories">Find your category</h2>
+          <p>Each category crowns its own winner, so your organization competes with groups like yours.</p>
+        </div>
+        <ul class="gb-cats">
+          <li class="gb-cat" tabindex="0">
+            <h3>Men’s &amp; Women’s Orgs</h3>
+            <ul>
+              <li>Men’s, women’s and co-ed service organizations</li>
+              <li>Social organizations</li>
+            </ul>
+            <p class="gb-cat__prize">$1,000</p>
+          </li>
+          <li class="gb-cat" tabindex="0">
+            <h3>Greek Life</h3>
+            <ul>
+              <li>Fraternities</li>
+              <li>Sororities</li>
+            </ul>
+            <p class="gb-cat__prize">$1,000</p>
+          </li>
+          <li class="gb-cat" tabindex="0">
+            <h3>Sophomore &amp; Freshman Leadership Orgs</h3>
+            <ul>
+              <li>Any freshman or sophomore leadership organization</li>
+            </ul>
+            <p class="gb-cat__prize">$1,000</p>
+          </li>
+          <li class="gb-cat" tabindex="0">
+            <h3>Corps of Cadets &amp; Others</h3>
+            <ul>
+              <li>Corps of Cadets outfits</li>
+              <li>Professional groups</li>
+              <li>Religious groups</li>
+              <li>Community service groups</li>
+              <li>Diversity groups</li>
+              <li>Any group that doesn’t fit another category</li>
+            </ul>
+            <p class="gb-cat__prize">$1,000</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="gb-why" aria-labelledby="gb-why">
+      <div class="wrap">
+        <p class="eyebrow" id="gb-why">Why it matters</p>
+        <blockquote class="gb-why__quote">
+          <p>The kids at Still Creek Ranch face obstacles they didn’t choose. Every day, they overcome them.</p>
+        </blockquote>
+        <p class="gb-why__body">Gladiator Dash benefits Still Creek Ranch. The Giveback Program sends $1,000 back to the organizations that bring the most runners, so your philanthropy wins too.</p>
+        <p><a href="about.html">About One Army and Still Creek Ranch</a></p>
+      </div>
+    </section>
+
+    <!-- CONFIRM WITH TEAM: deadline, what counts as a sign-up, and how winners are announced and paid. -->
+    <section class="band" aria-labelledby="gb-rules">
+      <div class="wrap">
+        <div class="band__head">
+          <p class="eyebrow">The fine print</p>
+          <h2 id="gb-rules">Rules</h2>
+        </div>
+        <dl class="facts gb-rules">
+          <div>
+            <dt>Who can enter</dt>
+            <dd>Student organizations in any of the four categories <span>Not sure which category fits? Email us before sign-ups close.</span></dd>
+          </div>
+          <div>
+            <dt>What counts</dt>
+            <dd>Runners registered under your organization’s team name <span>Spell it the same way every time. Sign-ups are counted by team name.</span></dd>
+          </div>
+          <div>
+            <dt>Prize</dt>
+            <dd>$1,000 per category <span>Paid to the winning organization’s philanthropy or community-serving event.</span></dd>
+          </div>
+          <div>
+            <dt>Winners</dt>
+            <dd>Announced after race day <span>Deadline and announcement details are coming soon.</span></dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="gb-cta" aria-labelledby="gb-cta">
+      <div class="wrap gb-cta__inner">
+        <div>
+          <p class="eyebrow">Ready?</p>
+          <h2 id="gb-cta">Get your org on the board</h2>
+          <p>Pick your team name, send it to every member, and register.</p>
+          <a class="btn btn--primary btn--lg" href="https://www.zeffy.com/en-US/ticketing/gladiator-dash--2027">Register your team</a>
+        </div>
+        <ul class="contact-tiles" aria-label="Questions">
+          <li>
+            <a class="contact-tile" href="mailto:onearmy.philanthropy@gmail.com">
+              <span class="contact-tile__label">Questions? Email</span>
+              <span class="contact-tile__value">onearmy.philanthropy@gmail.com</span>
+            </a>
+          </li>
+          <li>
+            <a class="contact-tile" href="https://www.instagram.com/gladiatordash/" rel="noopener">
+              <span class="contact-tile__label">Instagram</span>
+              <span class="contact-tile__value">@gladiatordash</span>
+            </a>
+          </li>
+        </ul>
       </div>
     </section>
 
@@ -105,7 +297,7 @@
     <div class="site-footer__inner">
 
       <div class="site-footer__brand">
-        <img src="media/shared/gd-logo-white.png" alt="One Army Gladiator Dash, April 11 2027" width="1538" height="643">
+        <img src="media/home/gd-logo-white.png" alt="One Army Gladiator Dash, April 11 2027" width="1538" height="643">
         <p class="site-footer__tagline">
           <strong>Run by One Army.</strong>
           Every dollar raised goes to Still Creek Ranch.

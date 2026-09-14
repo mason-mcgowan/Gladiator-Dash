@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
   <link rel="stylesheet" href="assets/site.css">
 </head>
-<body>
+<body data-page="raffle">
 
   <a class="skip-link" href="#main">Skip to content</a>
 
@@ -50,14 +50,151 @@
     <div class="page-head">
       <div class="wrap">
         <h1>Raffle</h1>
-        <p>Prizes and the endurance heat</p>
+        <p>Prizes, the drawing and the Endurance Race</p>
       </div>
     </div>
 
-    <section class="section">
+    <!-- CONFIRM WITH TEAM: 2027 prize list, ticket price, ticket link and drawing date.
+         Prizes below are the 2026 list and are labeled that way. -->
+    <section class="band" aria-labelledby="raffle-prizes">
       <div class="wrap">
-        <!-- TODO: Raffle content -->
-        <div class="stub">No content yet.</div>
+        <div class="raffle-intro">
+          <div class="band__head">
+            <p class="eyebrow">2026 raffle prizes</p>
+            <h2 id="raffle-prizes">Every ticket backs Still Creek Ranch</h2>
+            <p>Buy tickets online for a shot at any of the prizes below. Winners are drawn on race day and contacted shortly after.</p>
+          </div>
+          <a class="btn btn--primary btn--lg" href="https://www.zeffy.com/en-US/ticketing/gladiator-dashs-annual-raffle--2026">Buy raffle tickets</a>
+        </div>
+
+        <!-- Grand prize (performativeUI "PricingCard", featured tier, rebuilt as a slab). -->
+        <article class="raffle-grand" aria-labelledby="raffle-grand-name">
+          <p class="raffle-grand__flag">Grand prize</p>
+          <div class="raffle-grand__value">
+            <p class="raffle-grand__amount">$4,850</p>
+            <p class="raffle-grand__unit">Retail value</p>
+          </div>
+          <div class="raffle-grand__body">
+            <h3 id="raffle-grand-name">Tudor Black Bay 58</h3>
+            <p>Steel case with a blue dial.</p>
+            <a class="btn btn--primary" href="https://www.zeffy.com/en-US/ticketing/gladiator-dashs-annual-raffle--2026">Buy tickets</a>
+          </div>
+        </article>
+
+        <ul class="prize-grid" aria-label="More prizes">
+          <li class="prize">
+            <p class="prize__value">$450 value</p>
+            <h3>TaylorMade Signature Cart Golf Bag</h3>
+          </li>
+          <li class="prize">
+            <p class="prize__value">$100 value</p>
+            <h3>Cooper’s BBQ gift card and basket</h3>
+          </li>
+          <li class="prize">
+            <p class="prize__value">$100 value</p>
+            <h3>Raising Cane’s gift basket</h3>
+          </li>
+          <li class="prize">
+            <p class="prize__value">$100 value</p>
+            <h3>Grand Station Entertainment package</h3>
+          </li>
+          <li class="prize">
+            <p class="prize__value">$50 gift card</p>
+            <h3>Aggieland Outfitters</h3>
+          </li>
+          <li class="prize">
+            <p class="prize__value">$50 gift card</p>
+            <h3>Napa Flats Bistro</h3>
+          </li>
+          <li class="prize">
+            <p class="prize__value">$50 gift card</p>
+            <h3>Luigi’s Italian Restaurant</h3>
+          </li>
+          <li class="prize">
+            <p class="prize__value">5 meals</p>
+            <h3>Piada</h3>
+          </li>
+          <li class="prize">
+            <p class="prize__value">3 months</p>
+            <h3>MVP Car Wash membership</h3>
+          </li>
+          <li class="prize">
+            <p class="prize__value">Basket</p>
+            <h3>Fulton Farm breakfast meat basket</h3>
+            <p>Two ham steaks, 2 lb ground sausage, 1 lb bacon, two mugs, homemade nectarine jam and ginger jam.</p>
+          </li>
+          <li class="prize">
+            <p class="prize__value">Basket</p>
+            <h3>Fulton Farm grill basket</h3>
+            <p>Fresh bratwurst, Italian and smoked jalapeño cheddar links, country pork belly, country ribs and 2 lb ground pork.</p>
+          </li>
+          <li class="prize">
+            <p class="prize__value">Every ticket</p>
+            <h3>Supports Still Creek Ranch</h3>
+            <p>Raffle proceeds go to the kids at Still Creek Ranch.</p>
+          </li>
+        </ul>
+
+        <dl class="facts raffle-facts">
+          <div>
+            <dt>Tickets</dt>
+            <dd>Sold online <span>Use the button above to buy.</span></dd>
+          </div>
+          <div>
+            <dt>Drawing</dt>
+            <dd>Race day <span>Winners are contacted shortly after the drawing.</span></dd>
+          </div>
+          <div>
+            <dt>Proceeds</dt>
+            <dd>Still Creek Ranch <span>Every ticket supports the kids at the ranch.</span></dd>
+          </div>
+        </dl>
+
+        <!-- Prize businesses (performativeUI "LogoRow", as text logos). -->
+        <div class="donor-row">
+          <p class="donor-row__label">Prizes from these local businesses</p>
+          <ul>
+            <li>Cooper’s BBQ</li>
+            <li>Raising Cane’s</li>
+            <li>Grand Station</li>
+            <li>Aggieland Outfitters</li>
+            <li>Napa Flats</li>
+            <li>Luigi’s</li>
+            <li>Piada</li>
+            <li>MVP Car Wash</li>
+            <li>Fulton Farm</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONFIRM WITH TEAM: Endurance Race start time (Wix FAQ said 8:00, raffle page said 7:45). -->
+    <section class="band band--ink anchor-target" id="endurance" aria-labelledby="raffle-endurance">
+      <div class="wrap endurance">
+        <div class="band__head">
+          <p class="eyebrow">Want more than one lap?</p>
+          <h2 id="raffle-endurance">Endurance Race</h2>
+          <p>For runners who love mud and obstacles but want to go much farther than a few miles. Run the course as many times as you can before the clock runs out.</p>
+        </div>
+        <dl class="facts">
+          <div>
+            <dt>Start</dt>
+            <dd>First thing in the morning <span>Endurance runners head out before the regular heats.</span></dd>
+          </div>
+          <div>
+            <dt>Finish</dt>
+            <dd>1:00 p.m. <span>Keep running laps until the afternoon cutoff.</span></dd>
+          </div>
+          <div>
+            <dt>Scoring</dt>
+            <dd>One tally per lap <span>Most completed laps at the end of the day wins a prize.</span></dd>
+          </div>
+          <div>
+            <dt>Water</dt>
+            <dd>About halfway through the course <span>Stay hydrated without stopping your run.</span></dd>
+          </div>
+        </dl>
+        <p class="endurance__note">Questions? Email <a href="mailto:onearmy.philanthropy@gmail.com">onearmy.philanthropy@gmail.com</a>.</p>
       </div>
     </section>
 
@@ -105,7 +242,7 @@
     <div class="site-footer__inner">
 
       <div class="site-footer__brand">
-        <img src="media/shared/gd-logo-white.png" alt="One Army Gladiator Dash, April 11 2027" width="1538" height="643">
+        <img src="media/home/gd-logo-white.png" alt="One Army Gladiator Dash, April 11 2027" width="1538" height="643">
         <p class="site-footer__tagline">
           <strong>Run by One Army.</strong>
           Every dollar raised goes to Still Creek Ranch.
