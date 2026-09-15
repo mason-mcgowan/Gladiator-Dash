@@ -645,8 +645,6 @@ a.sponsor:hover .sponsor__cta, a.sponsor:focus-visible .sponsor__cta { opacity: 
 .prize p { margin: 0; font-size: var(--fs-sm); }
 .prize .prize__value { padding: var(--sp-1) var(--sp-2); border: 2px solid var(--navy-edge); color: var(--white); font-size: .8125rem; }
 
-.raffle-facts { margin-top: var(--sp-12); }
-
 /* Prize businesses (performativeUI "LogoRow", as text logos). */
 .donor-row {
   display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: var(--sp-4) var(--sp-12);
@@ -663,10 +661,6 @@ a.sponsor:hover .sponsor__cta, a.sponsor:focus-visible .sponsor__cta { opacity: 
   font-variation-settings: "wdth" 112, "wght" 700;
 }
 
-.endurance .facts { max-width: 60rem; }
-.endurance .facts > div { grid-template-columns: 8rem 1fr; }
-.endurance__note { margin: var(--sp-8) 0 0; }
-
 @media (max-width: 900px) {
   .prize-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .raffle-grand { grid-template-columns: 1fr; }
@@ -675,7 +669,73 @@ a.sponsor:hover .sponsor__cta, a.sponsor:focus-visible .sponsor__cta { opacity: 
 }
 @media (max-width: 560px) {
   .prize-grid { grid-template-columns: 1fr; }
-  .endurance .facts > div { grid-template-columns: 1fr; }
+}
+
+/* ============ Mercuria ============ */
+/* Both photos are washed to navy (grayscale under a multiplied navy layer) so they sit inside
+   the palette. Mercuria's own red shows once, in the logo on the lockup's white slab. */
+
+.merc-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.2) brightness(1.35); }
+.merc-wash { position: absolute; inset: 0; background: var(--navy); mix-blend-mode: multiply; }
+
+.merc-hero, .merc-work { position: relative; isolation: isolate; overflow: hidden; background: var(--ink); border-bottom: 3px solid var(--navy-line); }
+.merc-hero::after, .merc-work::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.merc-hero::after {
+  background: linear-gradient(180deg, transparent 0%, transparent 35%, color-mix(in srgb, var(--ink) 85%, transparent) 100%);
+}
+.merc-hero__photo { object-position: 70% 40%; }
+/* Tall frame with the headline pinned to the bottom, so the photo gets the top of the screen. */
+.merc-hero__inner {
+  position: relative; z-index: 2;
+  display: grid; justify-items: start; align-content: end; gap: var(--sp-6);
+  min-height: clamp(520px, 82vh, 920px);
+  min-height: clamp(520px, 82svh, 920px);
+  padding-block: var(--sp-24) var(--sp-16);
+}
+
+.merc-hero__title { margin: 0; max-width: 12ch; font-size: clamp(2.5rem, 8vw, 6.5rem); line-height: .9; letter-spacing: -.035em; text-wrap: balance; }
+.merc-hero__lede { margin: 0; color: var(--paper); font-size: var(--fs-lg); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .merc-hero__title, .merc-hero__lede { opacity: 0; animation: hero-line .6s cubic-bezier(.2,.9,.3,1) forwards; }
+  .merc-hero__title { animation-delay: .08s; }
+  .merc-hero__lede { animation-delay: .22s; }
+}
+
+.merc-who { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--sp-16); align-items: start; }
+.merc-who__plate { display: grid; place-items: center; padding: clamp(var(--sp-8), 4vw, var(--sp-12)) var(--sp-6); background: var(--white); }
+.merc-who__plate img { width: clamp(200px, 70%, 340px); }
+.merc-who h2 { margin-bottom: var(--sp-6); }
+.merc-who__text p { color: var(--paper); font-size: var(--fs-lg); }
+.merc-who__text p:last-child { margin-bottom: 0; }
+.merc-facts > div { grid-template-columns: 10rem 1fr; }
+
+.merc-work::after {
+  background: linear-gradient(180deg, transparent 0%, transparent 30%, color-mix(in srgb, var(--ink) 94%, transparent) 78%);
+}
+.merc-work__inner { position: relative; z-index: 2; padding-block: clamp(var(--sp-24), 16vw, 14rem) var(--sp-16); }
+.merc-work h2 { margin-bottom: var(--sp-4); }
+.merc-work__lede { margin-bottom: var(--sp-12); color: var(--paper); font-size: var(--fs-lg); }
+.merc-work__list {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2px; background: var(--navy-line); border: 2px solid var(--navy-line);
+}
+.merc-work__list li { display: flex; flex-direction: column; gap: var(--sp-3); padding: var(--sp-8) var(--sp-6); background: var(--ink); }
+.merc-work__list h3 { margin: 0; font-size: var(--fs-xl); }
+.merc-work__list p { margin: 0; }
+
+.merc-cta { padding: var(--sp-16) 0; background: var(--navy); }
+.merc-cta__inner { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--sp-8) var(--sp-12); align-items: end; }
+.merc-cta h2 { margin: 0 0 var(--sp-4); font-size: clamp(2.25rem, 5vw, 4rem); text-wrap: balance; }
+.merc-cta p { margin: 0; color: var(--paper); font-size: var(--fs-lg); }
+
+@media (max-width: 900px) {
+  .merc-who, .merc-cta__inner { grid-template-columns: 1fr; gap: var(--sp-12); align-items: start; }
+  .merc-work__list { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .merc-facts > div { grid-template-columns: 1fr; }
 }
 
 /* ============ Home: video hero ============ */

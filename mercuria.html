@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
   <link rel="stylesheet" href="assets/site.css">
 </head>
-<body>
+<body data-page="mercuria">
 
   <a class="skip-link" href="#main">Skip to content</a>
 
@@ -47,17 +47,84 @@
 
   <main id="main">
 
-    <div class="page-head">
-      <div class="wrap">
-        <h1>Mercuria</h1>
-        <p>Our title sponsor</p>
+    <!-- Hero: Mercuria's office wall washed to navy, under the headline. -->
+    <section class="merc-hero" aria-labelledby="merc-title">
+      <img class="merc-photo merc-hero__photo" src="media/mercuria/mercuria-office-map-wall.png" alt="" width="2000" height="1315">
+      <div class="merc-wash" aria-hidden="true"></div>
+      <div class="wrap merc-hero__inner">
+        <h1 class="merc-hero__title" id="merc-title">Presented by Mercuria</h1>
+        <p class="merc-hero__lede">Mercuria is the title sponsor of Gladiator Dash, the 3.1-mile mud run benefitting Still Creek Ranch.</p>
       </div>
-    </div>
+    </section>
 
-    <section class="section">
-      <div class="wrap">
-        <!-- TODO: Mercuria content -->
-        <div class="stub">No content yet.</div>
+    <section class="band" aria-labelledby="merc-who">
+      <div class="wrap merc-who">
+        <div class="merc-who__text">
+          <h2 id="merc-who">Who is Mercuria</h2>
+          <p>Mercuria is one of the world’s leading independent energy and commodity groups. Founded in 2004 by Marco Dunand and Daniel Jaeggi, it is headquartered in Geneva, Switzerland, and runs its North American operations from Houston, Texas.</p>
+          <p>More than 1,300 employees work across about 50 countries, trading crude oil and refined products, natural gas and LNG, power, base metals and agricultural goods.</p>
+          <p>The company’s mission is to connect markets and help the world move toward more sustainable energy.</p>
+        </div>
+        <!-- Logo plate heads the facts column: the white slab is the Register tab's block. -->
+        <div class="merc-who__card">
+          <div class="merc-who__plate">
+            <img src="media/mercuria/mercuria-page-logo.png" alt="" width="533" height="187" loading="lazy">
+          </div>
+          <dl class="facts merc-facts">
+            <div>
+              <dt>Sponsor level</dt>
+              <dd>Title sponsor <span>The top sponsor of Gladiator Dash.</span></dd>
+            </div>
+            <div>
+              <dt>North America</dt>
+              <dd>Houston, Texas <span>Headquarters for Mercuria’s North American operations.</span></dd>
+            </div>
+            <div>
+              <dt>Industry</dt>
+              <dd>Energy and commodities</dd>
+            </div>
+            <div>
+              <dt>Website</dt>
+              <dd><a href="https://mercuria.com/" rel="noopener">mercuria.com</a></dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section class="merc-work" aria-labelledby="merc-work">
+      <img class="merc-photo" src="media/mercuria/energy-terminal-sunset.png" alt="An energy storage terminal on the water at sunset, with a tanker docked at the pier" width="1024" height="683" loading="lazy">
+      <div class="merc-wash" aria-hidden="true"></div>
+      <div class="wrap merc-work__inner">
+        <h2 id="merc-work">What Mercuria does</h2>
+        <p class="merc-work__lede">Mercuria connects energy markets around the world, working toward energy that is more sustainable, affordable and reliable.</p>
+        <ul class="merc-work__list">
+          <li>
+            <h3>Trading</h3>
+            <p>Connecting the places that produce energy with the markets that need it.</p>
+          </li>
+          <li>
+            <h3>Financial structuring</h3>
+            <p>Putting together the financing behind energy deals.</p>
+          </li>
+          <li>
+            <h3>Asset investment</h3>
+            <p>Investing in energy assets. Mercuria beat its 2021 goal of putting over half of its investment capital into low-carbon sectors by 2025.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="merc-cta" aria-labelledby="merc-thanks">
+      <div class="wrap merc-cta__inner">
+        <div>
+          <h2 id="merc-thanks">Thank you, Mercuria</h2>
+          <p>Title sponsors help make Gladiator Dash possible. Register to run, and every dollar raised goes to Still Creek Ranch.</p>
+        </div>
+        <div class="btn-row">
+          <a class="btn btn--primary btn--lg" href="https://www.zeffy.com/en-US/ticketing/gladiator-dash--2027">Register</a>
+          <a class="btn btn--ghost btn--lg" href="https://mercuria.com/" rel="noopener">Visit mercuria.com</a>
+        </div>
       </div>
     </section>
 
