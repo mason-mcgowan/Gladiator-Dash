@@ -15,6 +15,18 @@
   --paper:  #e9edf1;
   --steel:  #93a7bd;
 
+  /* Metals. Only for the package names on the Sponsors page. */
+  --gold:   #d4af37;
+  --silver: #c7ced6;
+  --bronze: #cd7f32;
+
+  /* Ticket roll. Only for the Raffle page. */
+  --ticket-rust:    #de7645;
+  --ticket-slate:   #7eaad0;
+  --ticket-mustard: #e0b64f;
+  --ticket-sage:    #9ebf86;
+  --ticket-clay:    #cc857a;
+
   --font: "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
   --fs-sm:   0.9375rem;
@@ -348,6 +360,44 @@ a.sponsor:hover .sponsor__cta, a.sponsor:focus-visible .sponsor__cta { opacity: 
   .sponsor--name { font-size: var(--fs-base); }
 }
 
+/* Sponsorship packages at the foot of the page. Informational, so the cards don't lift or
+   invert like the logo tiles. The package names are the one place the metal colors appear. */
+.pkg-grid {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2px; background: var(--navy-line); border: 2px solid var(--navy-line);
+}
+.pkg { display: flex; flex-direction: column; background: var(--ink); }
+.pkg__head { display: grid; gap: var(--sp-3); padding: var(--sp-8) var(--sp-6) var(--sp-6); border-bottom: 2px solid var(--navy-line); }
+.pkg__tier { margin: 0; font-size: var(--fs-2xl); }
+.pkg__tier--gold   { color: var(--gold); }
+.pkg__tier--silver { color: var(--silver); }
+.pkg__tier--bronze { color: var(--bronze); }
+.pkg__price {
+  margin: 0; color: var(--white); font-size: clamp(2.5rem, 4.2vw, 3.75rem); line-height: .9; letter-spacing: -.04em;
+  font-variant-numeric: tabular-nums; font-variation-settings: "wdth" 125, "wght" 800;
+}
+.pkg__price span { margin-left: .06em; color: var(--steel); }
+.pkg__list { list-style: none; margin: 0; padding: var(--sp-6); display: grid; gap: var(--sp-3); align-content: start; }
+.pkg__list li { position: relative; padding-left: var(--sp-5); line-height: 1.45; }
+.pkg__list li::before { content: ""; position: absolute; left: 0; top: .6em; width: 7px; height: 7px; background: var(--white); }
+.pkg__list strong { color: var(--white); font-variation-settings: "wdth" 100, "wght" 700; }
+
+.pkg-contact {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: var(--sp-8) var(--sp-12); align-items: start;
+  margin-top: var(--sp-16); padding-top: var(--sp-12); border-top: 3px solid var(--navy-line);
+}
+.pkg-contact h3 { margin: 0 0 var(--sp-4); font-size: clamp(2rem, 4vw, 3.25rem); }
+.pkg-contact p { margin: 0; font-size: var(--fs-lg); }
+/* The email address is too long to share a row with a phone tile. */
+.pkg-contact .contact-tiles li:last-child { grid-column: 1 / -1; }
+.pkg-contact .contact-tile__value { overflow-wrap: normal; }
+
+@media (max-width: 1000px) {
+  .pkg-grid { grid-template-columns: 1fr; }
+  .pkg-contact { grid-template-columns: 1fr; }
+}
+
 /* ============ Content bands — shared by Giveback, FAQ and Raffle ============ */
 
 .band { padding: var(--sp-16) 0; border-bottom: 3px solid var(--navy-line); }
@@ -604,43 +654,100 @@ a.sponsor:hover .sponsor__cta, a.sponsor:focus-visible .sponsor__cta { opacity: 
 @media (max-width: 900px) { .faq-group__inner { grid-template-columns: 1fr; gap: var(--sp-6); } }
 
 /* ============ Raffle ============ */
+/* The one page with a carnival roll of ticket colors. Every prize is a ticket: a colored stub
+   with a running number, a dashed perforation, then the prize. Five dusty ticket-stock colors
+   cycle out of hue order (rust, slate, mustard, sage, clay) so the run never reads as a rainbow.
+   The grand prize is No. 001 in rust, so the grid starts at 002 in slate. */
 
 .raffle-intro { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: var(--sp-8); margin-bottom: var(--sp-16); }
 .raffle-intro .band__head { margin-bottom: 0; }
 
-/* Grand prize (performativeUI "PricingCard", featured): a flag, a lift and a white frame. */
+.btn--ticket { background: var(--ticket-rust); border-color: var(--ticket-rust); color: var(--ink); }
+.btn--ticket:hover { background: var(--white); border-color: var(--white); color: var(--ink); }
+
+.ticket-roll__ticket:nth-child(5n+1), .donor-row li:nth-child(5n+1), .prize:nth-child(5n)   { --tc: var(--ticket-rust); }
+.ticket-roll__ticket:nth-child(5n+2), .donor-row li:nth-child(5n+2), .prize:nth-child(5n+1) { --tc: var(--ticket-slate); }
+.ticket-roll__ticket:nth-child(5n+3), .donor-row li:nth-child(5n+3), .prize:nth-child(5n+2) { --tc: var(--ticket-mustard); }
+.ticket-roll__ticket:nth-child(5n+4), .donor-row li:nth-child(5n+4), .prize:nth-child(5n+3) { --tc: var(--ticket-sage); }
+.ticket-roll__ticket:nth-child(5n),   .donor-row li:nth-child(5n),   .prize:nth-child(5n+4) { --tc: var(--ticket-clay); }
+
+/* Page head: an unrolled strip of tickets, tilted and clipped at both edges. */
+body[data-page="raffle"] .page-head { position: relative; overflow: hidden; padding-bottom: 11rem; }
+.ticket-roll {
+  position: absolute; left: -4%; bottom: var(--sp-8);
+  display: flex; transform: rotate(-2.5deg); transform-origin: left center;
+}
+.ticket-roll__ticket {
+  flex: none; display: grid; align-content: center; gap: var(--sp-1);
+  width: 12.5rem; height: 4.75rem; padding: 0 var(--sp-5); white-space: nowrap;
+  background: var(--tc); color: var(--ink); border-right: 3px dashed var(--ink);
+  text-transform: uppercase; line-height: 1;
+}
+.ticket-roll__ticket span { font-size: .75rem; letter-spacing: .14em; font-variation-settings: "wdth" 110, "wght" 700; }
+.ticket-roll__ticket strong { font-size: 1.5rem; letter-spacing: -.01em; font-variation-settings: "wdth" 125, "wght" 800; }
+
+/* Grand prize (performativeUI "PricingCard", featured, rebuilt as a ticket). */
 .raffle-grand {
   position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  margin-bottom: var(--sp-8); background: var(--ink); border: 3px solid var(--navy-edge);
-  transition: transform .18s cubic-bezier(.23,1,.32,1), border-color .18s cubic-bezier(.23,1,.32,1);
+  margin-bottom: var(--sp-8); background: var(--ink); border: 3px solid var(--ticket-rust);
+  transition: transform .18s cubic-bezier(.23,1,.32,1);
 }
-.raffle-grand:hover, .raffle-grand:focus-within { transform: translateY(-4px); border-color: var(--white); }
+.raffle-grand:hover, .raffle-grand:focus-within { transform: translateY(-4px) rotate(-.4deg); }
 .raffle-grand__flag {
   position: absolute; left: -3px; top: -3px; transform: translateY(-100%); margin: 0;
-  padding: var(--sp-2) var(--sp-4); background: var(--white); color: var(--ink);
+  padding: var(--sp-2) var(--sp-4); background: var(--ticket-rust); color: var(--ink);
   font-size: var(--fs-sm); text-transform: uppercase; letter-spacing: .08em;
   font-variation-settings: "wdth" 118, "wght" 800;
 }
-.raffle-grand__value { display: grid; align-content: center; gap: var(--sp-3); padding: var(--sp-12) var(--sp-8); border-right: 3px solid var(--navy-line); }
-.raffle-grand__amount {
-  margin: 0; color: var(--white); font-size: clamp(3.5rem, 9vw, 7.5rem); line-height: .85; letter-spacing: -.04em;
-  font-variant-numeric: tabular-nums; font-variation-settings: "wdth" 125, "wght" 800;
+/* The stub is solid orange, torn along a dashed perforation with square notches at each end. */
+.raffle-grand__value {
+  position: relative; display: grid; align-content: center; gap: var(--sp-3);
+  padding: var(--sp-12) var(--sp-8); background: var(--ticket-rust); color: var(--ink);
+  border-right: 4px dashed var(--ink);
 }
-.raffle-grand__unit, .prize__value {
+.raffle-grand__value::before, .raffle-grand__value::after {
+  content: ""; position: absolute; right: -15px; width: 26px; height: 16px;
+  background: var(--navy-deep); border: 3px solid var(--ticket-rust);
+}
+.raffle-grand__value::before { top: -3px; border-top: 0; }
+.raffle-grand__value::after { bottom: -3px; border-bottom: 0; }
+.raffle-grand__no, .raffle-grand__unit, .prize__value {
   margin: 0; text-transform: uppercase; letter-spacing: .08em;
   font-variation-settings: "wdth" 110, "wght" 700;
 }
-.raffle-grand__unit { color: var(--steel); font-size: var(--fs-sm); }
-.raffle-grand__body { display: grid; align-content: center; justify-items: start; gap: var(--sp-4); padding: var(--sp-12) var(--sp-8); }
+.raffle-grand__no, .raffle-grand__unit { color: var(--ink); font-size: var(--fs-sm); }
+.raffle-grand__no { letter-spacing: .14em; }
+.raffle-grand__amount {
+  margin: 0; color: var(--ink); font-size: clamp(3.5rem, 9vw, 7.5rem); line-height: .85; letter-spacing: -.04em;
+  font-variant-numeric: tabular-nums; font-variation-settings: "wdth" 125, "wght" 800;
+}
+.raffle-grand__body { display: grid; align-content: center; justify-items: start; gap: var(--sp-4); padding: var(--sp-12) var(--sp-8) var(--sp-12) var(--sp-12); }
 .raffle-grand__body h3 { margin: 0; font-size: clamp(1.75rem, 3.4vw, 2.75rem); text-wrap: balance; }
 .raffle-grand__body p { margin: 0; }
 
 .prize-grid {
-  list-style: none; margin: 0; padding: 0;
+  list-style: none; margin: 0; padding: 0; counter-reset: ticket 1;
   display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 2px; background: var(--navy-line); border: 2px solid var(--navy-line);
 }
-.prize { display: flex; flex-direction: column; align-items: flex-start; gap: var(--sp-3); padding: var(--sp-6); background: var(--ink); }
+.prize {
+  position: relative; counter-increment: ticket;
+  display: flex; flex-direction: column; align-items: flex-start; gap: var(--sp-3);
+  padding: var(--sp-6) var(--sp-6) var(--sp-6) calc(3.25rem + var(--sp-6));
+  background: var(--ink);
+  transition: background-color .18s cubic-bezier(.23,1,.32,1);
+}
+/* The stub reads bottom to top; it's turned 180deg, so its perforation is the left border. */
+.prize::before {
+  content: "No. 0" counter(ticket, decimal-leading-zero);
+  position: absolute; left: 0; top: 0; bottom: 0; width: 3.25rem;
+  display: grid; place-items: center;
+  background: var(--tc); color: var(--ink); border-left: 3px dashed var(--ink);
+  writing-mode: vertical-rl; transform: rotate(180deg);
+  font-size: .75rem; letter-spacing: .14em; text-transform: uppercase;
+  font-variation-settings: "wdth" 118, "wght" 800;
+}
+.prize:hover { background: color-mix(in srgb, var(--tc) 14%, var(--ink)); }
 .prize h3 { margin: 0; font-size: var(--fs-lg); line-height: 1.15; }
 .prize p { margin: 0; font-size: var(--fs-sm); }
 .prize .prize__value { padding: var(--sp-1) var(--sp-2); border: 2px solid var(--navy-edge); color: var(--white); font-size: .8125rem; }
@@ -657,31 +764,40 @@ a.sponsor:hover .sponsor__cta, a.sponsor:focus-visible .sponsor__cta { opacity: 
 }
 .donor-row ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--sp-3) var(--sp-8); }
 .donor-row li {
+  display: inline-flex; align-items: center; gap: var(--sp-3);
   color: var(--steel); font-size: var(--fs-lg); text-transform: uppercase; letter-spacing: .02em;
   font-variation-settings: "wdth" 112, "wght" 700;
 }
+.donor-row li::before { content: ""; flex: none; width: 9px; height: 9px; background: var(--tc); }
 
 @media (max-width: 900px) {
   .prize-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .raffle-grand { grid-template-columns: 1fr; }
-  .raffle-grand__value { border-right: 0; border-bottom: 3px solid var(--navy-line); }
+  .raffle-grand__value { border-right: 0; border-bottom: 4px dashed var(--ink); }
+  .raffle-grand__value::before, .raffle-grand__value::after {
+    top: auto; right: auto; bottom: -15px; width: 16px; height: 26px; border: 3px solid var(--ticket-rust);
+  }
+  .raffle-grand__value::before { left: -3px; border-left: 0; }
+  .raffle-grand__value::after { right: -3px; border-right: 0; }
+  .raffle-grand__body { padding: var(--sp-12) var(--sp-8); }
   .donor-row { grid-template-columns: 1fr; }
 }
 @media (max-width: 560px) {
   .prize-grid { grid-template-columns: 1fr; }
+  body[data-page="raffle"] .page-head { padding-bottom: 9.5rem; }
+  .ticket-roll__ticket { width: 9.5rem; height: 4rem; padding: 0 var(--sp-4); }
+  .ticket-roll__ticket strong { font-size: 1.25rem; }
 }
 
 /* ============ Mercuria ============ */
-/* Both photos are washed to navy (grayscale under a multiplied navy layer) so they sit inside
-   the palette. Mercuria's own red shows once, in the logo on the lockup's white slab. */
+/* Both photos run in their own colors; a dark gradient under the text keeps it readable. */
 
-.merc-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.2) brightness(1.35); }
-.merc-wash { position: absolute; inset: 0; background: var(--navy); mix-blend-mode: multiply; }
+.merc-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 
 .merc-hero, .merc-work { position: relative; isolation: isolate; overflow: hidden; background: var(--ink); border-bottom: 3px solid var(--navy-line); }
 .merc-hero::after, .merc-work::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; }
 .merc-hero::after {
-  background: linear-gradient(180deg, transparent 0%, transparent 35%, color-mix(in srgb, var(--ink) 85%, transparent) 100%);
+  background: linear-gradient(180deg, transparent 0%, transparent 25%, color-mix(in srgb, var(--ink) 60%, transparent) 60%, color-mix(in srgb, var(--ink) 90%, transparent) 100%);
 }
 .merc-hero__photo { object-position: 70% 40%; }
 /* Tall frame with the headline pinned to the bottom, so the photo gets the top of the screen. */
