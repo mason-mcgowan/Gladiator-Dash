@@ -15,7 +15,7 @@
   --paper:  #e9edf1;
   --steel:  #93a7bd;
 
-  /* Metals. Only for the package names on the Sponsors page. */
+  /* Metals. Only for the tier and package names on the Sponsors page. */
   --gold:   #d4af37;
   --silver: #c7ced6;
   --bronze: #cd7f32;
@@ -238,6 +238,9 @@ ul, ol { margin: 0 0 var(--sp-4); padding-left: var(--sp-6); }
 .page-head { background: var(--ink); border-bottom: 3px solid var(--navy-line); padding: var(--sp-24) 0; }
 .page-head h1 { font-size: clamp(2.5rem, 7vw, 5.5rem); }
 .page-head p { color: var(--steel); font-size: var(--fs-lg); margin: 0; }
+/* Pages whose head is just a title and one line get a shorter band. */
+body[data-page="raffle"] .page-head, body[data-page="sponsors"] .page-head { padding: var(--sp-12) 0; }
+body[data-page="raffle"] .page-head h1, body[data-page="sponsors"] .page-head h1 { margin-bottom: var(--sp-2); }
 
 .section { padding: var(--sp-24) 0; }
 .stub { border: 2px dashed var(--navy-line); padding: var(--sp-16); color: var(--steel); }
@@ -357,7 +360,7 @@ a.sponsor:hover .sponsor__cta, a.sponsor:focus-visible .sponsor__cta { opacity: 
 }
 
 /* Sponsorship packages at the foot of the page. Informational, so the cards don't lift or
-   invert like the logo tiles. The package names are the one place the metal colors appear. */
+   invert like the logo tiles. Package and tier names are the one place the metal colors appear. */
 .pkg-grid {
   list-style: none; margin: 0; padding: 0;
   display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -366,9 +369,10 @@ a.sponsor:hover .sponsor__cta, a.sponsor:focus-visible .sponsor__cta { opacity: 
 .pkg { display: flex; flex-direction: column; background: var(--ink); }
 .pkg__head { display: grid; gap: var(--sp-3); padding: var(--sp-8) var(--sp-6) var(--sp-6); border-bottom: 2px solid var(--navy-line); }
 .pkg__tier { margin: 0; font-size: var(--fs-2xl); }
-.pkg__tier--gold   { color: var(--gold); }
-.pkg__tier--silver { color: var(--silver); }
-.pkg__tier--bronze { color: var(--bronze); }
+/* Shared by the tier headings on the wall and the package names below. */
+.metal--gold   { color: var(--gold); }
+.metal--silver { color: var(--silver); }
+.metal--bronze { color: var(--bronze); }
 .pkg__price {
   margin: 0; color: var(--white); font-size: clamp(2.5rem, 4.2vw, 3.75rem); line-height: .9; letter-spacing: -.04em;
   font-variant-numeric: tabular-nums; font-variation-settings: "wdth" 125, "wght" 800;
@@ -591,20 +595,21 @@ a.sponsor:hover .sponsor__cta, a.sponsor:focus-visible .sponsor__cta { opacity: 
 @media (max-width: 900px) { .faq-group__inner { grid-template-columns: 1fr; gap: var(--sp-6); } }
 
 /* ============ Raffle ============ */
-/* Prize photos and donor logos sit on white plates in their own colors; everything around
-   them is the same black slab and navy rule as the rest of the site. */
+/* Most prize photos and donor logos come with white baked in, so each one sits on a small
+   white tile inset in a black card. The white stays in the tiles, never the whole card. */
 
 .raffle-intro { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: var(--sp-8); margin-bottom: var(--sp-16); }
 .raffle-intro .band__head { margin-bottom: 0; }
 
-/* Grand prize: photo plate on the left, name and value on the right. */
+/* Grand prize: photo tile on the left, name and value on the right. */
 .raffle-grand {
-  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  margin-bottom: var(--sp-8); background: var(--ink); border: 3px solid var(--navy-line);
+  display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: var(--sp-6);
+  margin-bottom: var(--sp-12); padding: var(--sp-6);
+  background: var(--ink); border: 2px solid var(--navy-line);
 }
-.raffle-grand__media { display: grid; place-items: center; padding: var(--sp-8); background: var(--white); }
-.raffle-grand__media img { display: block; width: auto; height: auto; max-width: 100%; max-height: 440px; }
-.raffle-grand__body { display: grid; align-content: center; justify-items: start; gap: var(--sp-4); padding: var(--sp-12); }
+.raffle-grand__media { display: grid; place-items: center; padding: var(--sp-6); background: var(--white); }
+.raffle-grand__media img { display: block; width: auto; height: auto; max-width: 100%; max-height: 340px; }
+.raffle-grand__body { display: grid; align-content: center; justify-items: start; gap: var(--sp-4); padding: var(--sp-6) var(--sp-8); }
 .raffle-grand__body h3 { margin: 0; font-size: clamp(1.75rem, 3.4vw, 2.75rem); text-wrap: balance; }
 .raffle-grand__body p { margin: 0; }
 .raffle-grand__value {
@@ -620,43 +625,42 @@ a.sponsor:hover .sponsor__cta, a.sponsor:focus-visible .sponsor__cta { opacity: 
   font-variation-settings: "wdth" 110, "wght" 700;
 }
 
-/* Rules are the grid showing through 2px gaps; 12 cards, so rows fill at 3, 2 and 1 across. */
+/* Separate cards with real gaps; 12 of them, so rows fill at 3, 2 and 1 across. */
 .prize-grid {
   list-style: none; margin: 0; padding: 0;
-  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 2px; background: var(--navy-line); border: 2px solid var(--navy-line);
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--sp-6);
 }
-.prize { display: flex; flex-direction: column; background: var(--ink); }
+.prize { display: flex; flex-direction: column; background: var(--ink); border: 2px solid var(--navy-line); }
 .prize__media {
-  display: grid; place-items: center; aspect-ratio: 4 / 3; padding: var(--sp-8);
+  display: grid; place-items: center; aspect-ratio: 16 / 10; margin: var(--sp-4) var(--sp-4) 0; padding: var(--sp-6);
   background: var(--white); overflow: hidden;
 }
 .prize__media img { display: block; width: auto; height: auto; max-width: 100%; max-height: 100%; min-height: 0; }
 /* Logos share one box so a tall mark and a wide wordmark read at the same weight. */
-.prize__media--logo img { max-width: min(100%, 240px); max-height: min(100%, 140px); }
-/* Real photos fill the plate edge to edge instead of floating like a logo. */
+.prize__media--logo img { max-width: min(100%, 200px); max-height: min(100%, 110px); }
+/* Real photos fill the tile edge to edge instead of floating like a logo. */
 .prize__media--photo { padding: 0; }
 .prize__media--photo img { width: 100%; height: 100%; object-fit: cover; }
-.prize__body { display: grid; gap: var(--sp-2); align-content: start; padding: var(--sp-6); border-top: 2px solid var(--navy-line); }
+.prize__body { display: grid; gap: var(--sp-2); align-content: start; padding: var(--sp-5) var(--sp-6) var(--sp-6); }
 .prize__body h3 { margin: 0; font-size: var(--fs-lg); line-height: 1.15; }
 .prize__body p { margin: 0; font-size: var(--fs-sm); }
 
-/* The last card is the cause, not a prize: navy, no plate, button at the foot. */
+/* The last card is the cause, not a prize: navy, no tile, button at the foot. */
 .prize--cause { justify-content: space-between; background: var(--navy); }
-.prize--cause .prize__body { padding: var(--sp-8) var(--sp-6); border-top: 0; gap: var(--sp-3); }
+.prize--cause .prize__body { padding: var(--sp-8) var(--sp-6); gap: var(--sp-3); }
 .prize--cause h3 { font-size: var(--fs-xl); }
 .prize--cause p { color: var(--paper); font-size: var(--fs-base); }
 .prize--cause .btn { margin: 0 var(--sp-6) var(--sp-6); text-align: center; }
 
 @media (max-width: 900px) {
-  .prize-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .prize-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-4); }
   .raffle-grand { grid-template-columns: 1fr; }
-  .raffle-grand__media img { max-height: 320px; }
-  .raffle-grand__body { padding: var(--sp-8); }
+  .raffle-grand__media img { max-height: 280px; }
+  .raffle-grand__body { padding: var(--sp-4) var(--sp-2) var(--sp-2); }
 }
 @media (max-width: 560px) {
   .prize-grid { grid-template-columns: 1fr; }
-  .raffle-grand__body { padding: var(--sp-8) var(--sp-6); }
+  .raffle-grand { padding: var(--sp-4); }
 }
 
 /* ============ Mercuria ============ */
