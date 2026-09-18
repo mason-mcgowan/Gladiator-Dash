@@ -16,8 +16,8 @@ unless asked otherwise.
 - Every page needs `<body data-page="...">` matching the `data-nav` value in the header.
 - Never hardcode a color or font — use the custom properties in `tokens.css`.
 - Palette is navy, black and white only. No gold, no maroon, no third accent.
-  Exceptions: the metal colors (`--gold`, `--silver`, `--bronze`) for the package names
-  on the Sponsors page, and the ticket colors (`--ticket-*`) on the Raffle page.
+  Exception: the metal colors (`--gold`, `--silver`, `--bronze`) for the package names
+  on the Sponsors page. Prize photos and donor logos on the Raffle page keep their own colors.
 - Rugged, not clean: zero border-radius, 2-3px rules, grain overlay, no shadows.
 - Type is Archivo, one family. Display and nav are uppercase at wdth 118-125 /
   wght 700-800; body is wdth 100 / wght 400.

@@ -20,13 +20,6 @@
   --silver: #c7ced6;
   --bronze: #cd7f32;
 
-  /* Ticket roll. Only for the Raffle page. */
-  --ticket-rust:    #de7645;
-  --ticket-slate:   #7eaad0;
-  --ticket-mustard: #e0b64f;
-  --ticket-sage:    #9ebf86;
-  --ticket-clay:    #cc857a;
-
   --font: "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
   --fs-sm:   0.9375rem;
@@ -165,13 +158,16 @@ ul, ol { margin: 0 0 var(--sp-4); padding-left: var(--sp-6); }
 .site-nav__list a:hover { color: var(--white); background: var(--navy); }
 .site-nav__list a[aria-current="page"] { color: var(--white); border-bottom-color: var(--white); }
 
+/* Register: a tab like the rest, set as a solid white block. */
 .site-nav__cta {
-  display: flex; align-items: center;
+  display: flex; align-items: center; justify-content: center;
   padding: 0 var(--sp-6);
   background: var(--white); color: var(--ink);
   font-size: 1.0625rem;
-  font-variation-settings: "wdth" 118, "wght" 800;
+  font-variation-settings: "wdth" 118, "wght" 700;
   letter-spacing: .045em; text-transform: uppercase; text-decoration: none;
+  border-bottom: 5px solid transparent;
+  transition: color .12s linear, background-color .12s linear;
 }
 .site-nav__cta:hover { background: var(--paper); color: var(--ink); }
 
@@ -200,7 +196,7 @@ ul, ol { margin: 0 0 var(--sp-4); padding-left: var(--sp-6); }
   .site-nav__list { flex: none; }
   .site-nav__list li { flex: none; }
   .site-nav__list a { justify-content: flex-start; padding: var(--sp-5) var(--sp-6); font-size: var(--fs-lg); border-bottom: 0; }
-  .site-nav__cta { margin: var(--sp-6) var(--sp-6) 0; padding: var(--sp-4) var(--sp-8); justify-content: center; }
+  .site-nav__cta { margin: var(--sp-6) var(--sp-6) 0; padding: var(--sp-4) var(--sp-8); border-bottom: 0; }
 }
 
 /* ============ Buttons ============ */
@@ -448,45 +444,16 @@ a.sponsor:hover .sponsor__cta, a.sponsor:focus-visible .sponsor__cta { opacity: 
 /* ============ Giveback ============ */
 
 .gb-hero { background: var(--ink); border-bottom: 3px solid var(--navy-line); }
-.gb-hero__field {
-  position: relative; overflow: hidden; isolation: isolate; user-select: none;
-  min-height: clamp(300px, 36vw, 540px);
-  border-bottom: 3px solid var(--navy-line);
-}
-.gb-hero__field.is-scoped { cursor: crosshair; }
-.gb-hero__layer { position: absolute; inset: 0; display: grid; place-items: center; overflow: hidden; }
-.gb-hero__layer--base { color: var(--white); }
-.gb-hero__layer--lens { display: none; background: var(--white); color: var(--ink); clip-path: polygon(0 0, 0 0, 0 0, 0 0); }
-.is-scoped .gb-hero__layer--lens { display: grid; }
-.gb-hero__pattern {
-  position: absolute; inset: 0; overflow: hidden;
-  display: flex; flex-direction: column; justify-content: center;
-  font-size: .8125rem; line-height: 2.1; letter-spacing: .3em; white-space: nowrap;
-  text-transform: uppercase; font-variation-settings: "wdth" 118, "wght" 700;
-  opacity: .16;
-}
-.gb-hero__pattern span { display: block; }
-.gb-hero__pattern span:nth-child(even) { padding-left: 6em; }
-.gb-hero__pattern--lens { font-size: 1.125rem; opacity: .2; }
-.gb-hero__word {
-  position: relative; margin: 0; max-width: none; padding: 0 var(--sp-6); text-align: center;
-  font-size: clamp(3.5rem, 18vw, 16rem); line-height: .82; letter-spacing: -.04em;
-  text-transform: uppercase; font-variation-settings: "wdth" 125, "wght" 800;
-}
-/* "Your organization" is three times longer than "$1,000", so it gets its own size and wraps. */
-.gb-hero__word--reveal { font-size: clamp(1.75rem, 9vw, 8.5rem); line-height: .9; }
-.gb-hero__reticle {
-  position: absolute; left: 0; top: 0; z-index: 2; width: 0; height: 0;
-  border: 3px solid var(--ink); pointer-events: none; opacity: 0;
-}
-.is-scoped:hover .gb-hero__reticle { opacity: 1; }
-
 .gb-hero__bar {
-  display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end;
-  gap: var(--sp-8) var(--sp-12); padding-block: var(--sp-12);
+  display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); align-items: center;
+  gap: var(--sp-12); padding-block: var(--sp-16);
 }
-.gb-hero__title { margin: var(--sp-4) 0 var(--sp-3); font-size: clamp(2rem, 4.6vw, 3.75rem); text-wrap: balance; }
-.gb-hero__lede { margin: 0; color: var(--steel); font-size: var(--fs-lg); }
+/* Sized so "Organization" always fits its column: it is about 10 em wide at this width axis. */
+.gb-hero__title { margin: var(--sp-4) 0 var(--sp-3); font-size: clamp(2rem, 4.2vw, 4.5rem); text-wrap: balance; }
+.gb-hero__lede { margin: 0 0 var(--sp-8); color: var(--steel); font-size: var(--fs-lg); }
+.gb-hero .btn--lg { padding-inline: var(--sp-8); }
+.gb-hero__photo { margin: 0; border: 3px solid var(--navy-line); background: var(--navy); }
+.gb-hero__photo img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; object-position: 50% 60%; }
 
 .gb-roll__line {
   margin: 0; max-width: none; color: var(--white);
@@ -505,20 +472,6 @@ a.sponsor:hover .sponsor__cta, a.sponsor:focus-visible .sponsor__cta { opacity: 
 }
 .word-roll__word.is-active { transform: none; opacity: 1; }
 .word-roll__word.is-past { transform: translateY(-105%); opacity: 0; }
-
-.gb-stats {
-  margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 2px; background: var(--navy-line); border: 2px solid var(--navy-line);
-}
-.gb-stat { display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: var(--sp-3); padding: var(--sp-8) var(--sp-6); background: var(--ink); }
-.gb-stat dt {
-  color: var(--steel); font-size: var(--fs-sm); text-transform: uppercase; letter-spacing: .08em;
-  font-variation-settings: "wdth" 110, "wght" 700;
-}
-.gb-stat dd {
-  margin: 0; color: var(--white); font-size: clamp(3rem, 7vw, 5.5rem); line-height: .9; letter-spacing: -.04em;
-  font-variant-numeric: tabular-nums; font-variation-settings: "wdth" 125, "wght" 800;
-}
 
 .gb-steps {
   list-style: none; margin: 0; padding: 0;
@@ -561,36 +514,20 @@ a.sponsor:hover .sponsor__cta, a.sponsor:focus-visible .sponsor__cta { opacity: 
   font-variation-settings: "wdth" 125, "wght" 800;
   transition: color .18s cubic-bezier(.23,1,.32,1), border-color .18s cubic-bezier(.23,1,.32,1);
 }
-.gb-cat:hover, .gb-cat:focus-visible { background: var(--white); color: var(--ink); }
-.gb-cat:hover h3, .gb-cat:focus-visible h3,
-.gb-cat:hover .gb-cat__prize, .gb-cat:focus-visible .gb-cat__prize { color: var(--ink); border-color: var(--ink); }
-.gb-cat:focus-visible { outline: 3px solid var(--ink); outline-offset: -9px; }
-
-.gb-why { padding: var(--sp-24) 0; background: var(--navy); border-bottom: 3px solid var(--navy-line); }
-.gb-why__quote { margin: var(--sp-4) 0 var(--sp-8); }
-.gb-why__quote p {
-  margin: 0; max-width: 24ch; color: var(--white);
-  font-size: clamp(2rem, 4.8vw, 4rem); line-height: 1.02; letter-spacing: -.02em;
-  text-transform: uppercase; font-variation-settings: "wdth" 118, "wght" 800; text-wrap: balance;
-}
-.gb-why__body { color: var(--paper); font-size: var(--fs-lg); }
-
-.gb-rules { max-width: 60rem; }
-.gb-rules > div { grid-template-columns: 11rem 1fr; }
-
-.gb-cta { padding: var(--sp-16) 0; background: var(--ink); }
-.gb-cta__inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 28rem); gap: var(--sp-12); align-items: start; }
-.gb-cta h2 { margin: var(--sp-3) 0 var(--sp-4); font-size: clamp(2.25rem, 5vw, 4rem); text-wrap: balance; }
-.gb-cta .btn { margin-top: var(--sp-4); }
+.gb-cat:hover { background: var(--white); color: var(--ink); }
+.gb-cat:hover h3, .gb-cat:hover .gb-cat__prize { color: var(--ink); border-color: var(--ink); }
 
 @media (max-width: 1100px) { .gb-cats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 900px) {
-  .gb-hero__bar, .gb-cta__inner { grid-template-columns: 1fr; align-items: start; }
-  .gb-steps, .gb-stats { grid-template-columns: 1fr; }
+  .gb-hero__bar { grid-template-columns: 1fr; gap: var(--sp-8); padding-block: var(--sp-12); }
+  .gb-hero__title { font-size: min(3.5rem, calc((100vw - 3rem) / 10.5)); }
+  /* A short strip on phones so the photo doesn't fill the screen. */
+  .gb-hero__photo img { aspect-ratio: 16 / 9; object-position: 50% 45%; }
+  .gb-steps { grid-template-columns: 1fr; }
 }
 @media (max-width: 600px) {
   .gb-cats { grid-template-columns: 1fr; }
-  .gb-rules > div { grid-template-columns: 1fr; }
+  .gb-hero .btn--lg { flex: 1 1 100%; padding-inline: var(--sp-4); font-size: var(--fs-base); text-align: center; }
 }
 
 /* ============ FAQ ============ */
@@ -654,139 +591,72 @@ a.sponsor:hover .sponsor__cta, a.sponsor:focus-visible .sponsor__cta { opacity: 
 @media (max-width: 900px) { .faq-group__inner { grid-template-columns: 1fr; gap: var(--sp-6); } }
 
 /* ============ Raffle ============ */
-/* The one page with a carnival roll of ticket colors. Every prize is a ticket: a colored stub
-   with a running number, a dashed perforation, then the prize. Five dusty ticket-stock colors
-   cycle out of hue order (rust, slate, mustard, sage, clay) so the run never reads as a rainbow.
-   The grand prize is No. 001 in rust, so the grid starts at 002 in slate. */
+/* Prize photos and donor logos sit on white plates in their own colors; everything around
+   them is the same black slab and navy rule as the rest of the site. */
 
 .raffle-intro { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: var(--sp-8); margin-bottom: var(--sp-16); }
 .raffle-intro .band__head { margin-bottom: 0; }
 
-.btn--ticket { background: var(--ticket-rust); border-color: var(--ticket-rust); color: var(--ink); }
-.btn--ticket:hover { background: var(--white); border-color: var(--white); color: var(--ink); }
-
-.ticket-roll__ticket:nth-child(5n+1), .donor-row li:nth-child(5n+1), .prize:nth-child(5n)   { --tc: var(--ticket-rust); }
-.ticket-roll__ticket:nth-child(5n+2), .donor-row li:nth-child(5n+2), .prize:nth-child(5n+1) { --tc: var(--ticket-slate); }
-.ticket-roll__ticket:nth-child(5n+3), .donor-row li:nth-child(5n+3), .prize:nth-child(5n+2) { --tc: var(--ticket-mustard); }
-.ticket-roll__ticket:nth-child(5n+4), .donor-row li:nth-child(5n+4), .prize:nth-child(5n+3) { --tc: var(--ticket-sage); }
-.ticket-roll__ticket:nth-child(5n),   .donor-row li:nth-child(5n),   .prize:nth-child(5n+4) { --tc: var(--ticket-clay); }
-
-/* Page head: an unrolled strip of tickets, tilted and clipped at both edges. */
-body[data-page="raffle"] .page-head { position: relative; overflow: hidden; padding-bottom: 11rem; }
-.ticket-roll {
-  position: absolute; left: -4%; bottom: var(--sp-8);
-  display: flex; transform: rotate(-2.5deg); transform-origin: left center;
-}
-.ticket-roll__ticket {
-  flex: none; display: grid; align-content: center; gap: var(--sp-1);
-  width: 12.5rem; height: 4.75rem; padding: 0 var(--sp-5); white-space: nowrap;
-  background: var(--tc); color: var(--ink); border-right: 3px dashed var(--ink);
-  text-transform: uppercase; line-height: 1;
-}
-.ticket-roll__ticket span { font-size: .75rem; letter-spacing: .14em; font-variation-settings: "wdth" 110, "wght" 700; }
-.ticket-roll__ticket strong { font-size: 1.5rem; letter-spacing: -.01em; font-variation-settings: "wdth" 125, "wght" 800; }
-
-/* Grand prize (performativeUI "PricingCard", featured, rebuilt as a ticket). */
+/* Grand prize: photo plate on the left, name and value on the right. */
 .raffle-grand {
-  position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  margin-bottom: var(--sp-8); background: var(--ink); border: 3px solid var(--ticket-rust);
-  transition: transform .18s cubic-bezier(.23,1,.32,1);
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  margin-bottom: var(--sp-8); background: var(--ink); border: 3px solid var(--navy-line);
 }
-.raffle-grand:hover, .raffle-grand:focus-within { transform: translateY(-4px) rotate(-.4deg); }
-.raffle-grand__flag {
-  position: absolute; left: -3px; top: -3px; transform: translateY(-100%); margin: 0;
-  padding: var(--sp-2) var(--sp-4); background: var(--ticket-rust); color: var(--ink);
-  font-size: var(--fs-sm); text-transform: uppercase; letter-spacing: .08em;
-  font-variation-settings: "wdth" 118, "wght" 800;
-}
-/* The stub is solid orange, torn along a dashed perforation with square notches at each end. */
-.raffle-grand__value {
-  position: relative; display: grid; align-content: center; gap: var(--sp-3);
-  padding: var(--sp-12) var(--sp-8); background: var(--ticket-rust); color: var(--ink);
-  border-right: 4px dashed var(--ink);
-}
-.raffle-grand__value::before, .raffle-grand__value::after {
-  content: ""; position: absolute; right: -15px; width: 26px; height: 16px;
-  background: var(--navy-deep); border: 3px solid var(--ticket-rust);
-}
-.raffle-grand__value::before { top: -3px; border-top: 0; }
-.raffle-grand__value::after { bottom: -3px; border-bottom: 0; }
-.raffle-grand__no, .raffle-grand__unit, .prize__value {
-  margin: 0; text-transform: uppercase; letter-spacing: .08em;
-  font-variation-settings: "wdth" 110, "wght" 700;
-}
-.raffle-grand__no, .raffle-grand__unit { color: var(--ink); font-size: var(--fs-sm); }
-.raffle-grand__no { letter-spacing: .14em; }
-.raffle-grand__amount {
-  margin: 0; color: var(--ink); font-size: clamp(3.5rem, 9vw, 7.5rem); line-height: .85; letter-spacing: -.04em;
-  font-variant-numeric: tabular-nums; font-variation-settings: "wdth" 125, "wght" 800;
-}
-.raffle-grand__body { display: grid; align-content: center; justify-items: start; gap: var(--sp-4); padding: var(--sp-12) var(--sp-8) var(--sp-12) var(--sp-12); }
+.raffle-grand__media { display: grid; place-items: center; padding: var(--sp-8); background: var(--white); }
+.raffle-grand__media img { display: block; width: auto; height: auto; max-width: 100%; max-height: 440px; }
+.raffle-grand__body { display: grid; align-content: center; justify-items: start; gap: var(--sp-4); padding: var(--sp-12); }
 .raffle-grand__body h3 { margin: 0; font-size: clamp(1.75rem, 3.4vw, 2.75rem); text-wrap: balance; }
 .raffle-grand__body p { margin: 0; }
+.raffle-grand__value {
+  display: grid; gap: var(--sp-2); justify-self: stretch;
+  margin: var(--sp-2) 0 var(--sp-4); padding-top: var(--sp-6); border-top: 2px solid var(--navy-line);
+}
+.raffle-grand__body .raffle-grand__amount {
+  color: var(--white); font-size: clamp(3rem, 6vw, 5rem); line-height: .9; letter-spacing: -.04em;
+  font-variant-numeric: tabular-nums; font-variation-settings: "wdth" 125, "wght" 800;
+}
+.raffle-grand__unit, .prize__value {
+  margin: 0; color: var(--steel); font-size: var(--fs-sm); text-transform: uppercase; letter-spacing: .08em;
+  font-variation-settings: "wdth" 110, "wght" 700;
+}
 
+/* Rules are the grid showing through 2px gaps; 12 cards, so rows fill at 3, 2 and 1 across. */
 .prize-grid {
-  list-style: none; margin: 0; padding: 0; counter-reset: ticket 1;
+  list-style: none; margin: 0; padding: 0;
   display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 2px; background: var(--navy-line); border: 2px solid var(--navy-line);
 }
-.prize {
-  position: relative; counter-increment: ticket;
-  display: flex; flex-direction: column; align-items: flex-start; gap: var(--sp-3);
-  padding: var(--sp-6) var(--sp-6) var(--sp-6) calc(3.25rem + var(--sp-6));
-  background: var(--ink);
-  transition: background-color .18s cubic-bezier(.23,1,.32,1);
+.prize { display: flex; flex-direction: column; background: var(--ink); }
+.prize__media {
+  display: grid; place-items: center; aspect-ratio: 4 / 3; padding: var(--sp-8);
+  background: var(--white); overflow: hidden;
 }
-/* The stub reads bottom to top; it's turned 180deg, so its perforation is the left border. */
-.prize::before {
-  content: "No. 0" counter(ticket, decimal-leading-zero);
-  position: absolute; left: 0; top: 0; bottom: 0; width: 3.25rem;
-  display: grid; place-items: center;
-  background: var(--tc); color: var(--ink); border-left: 3px dashed var(--ink);
-  writing-mode: vertical-rl; transform: rotate(180deg);
-  font-size: .75rem; letter-spacing: .14em; text-transform: uppercase;
-  font-variation-settings: "wdth" 118, "wght" 800;
-}
-.prize:hover { background: color-mix(in srgb, var(--tc) 14%, var(--ink)); }
-.prize h3 { margin: 0; font-size: var(--fs-lg); line-height: 1.15; }
-.prize p { margin: 0; font-size: var(--fs-sm); }
-.prize .prize__value { padding: var(--sp-1) var(--sp-2); border: 2px solid var(--navy-edge); color: var(--white); font-size: .8125rem; }
+.prize__media img { display: block; width: auto; height: auto; max-width: 100%; max-height: 100%; min-height: 0; }
+/* Logos share one box so a tall mark and a wide wordmark read at the same weight. */
+.prize__media--logo img { max-width: min(100%, 240px); max-height: min(100%, 140px); }
+/* Real photos fill the plate edge to edge instead of floating like a logo. */
+.prize__media--photo { padding: 0; }
+.prize__media--photo img { width: 100%; height: 100%; object-fit: cover; }
+.prize__body { display: grid; gap: var(--sp-2); align-content: start; padding: var(--sp-6); border-top: 2px solid var(--navy-line); }
+.prize__body h3 { margin: 0; font-size: var(--fs-lg); line-height: 1.15; }
+.prize__body p { margin: 0; font-size: var(--fs-sm); }
 
-/* Prize businesses (performativeUI "LogoRow", as text logos). */
-.donor-row {
-  display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: var(--sp-4) var(--sp-12);
-  margin-top: var(--sp-12); padding-block: var(--sp-8);
-  border-top: 2px solid var(--navy-line); border-bottom: 2px solid var(--navy-line);
-}
-.donor-row__label {
-  margin: 0; color: var(--white); font-size: var(--fs-sm); text-transform: uppercase; letter-spacing: .1em;
-  font-variation-settings: "wdth" 110, "wght" 700;
-}
-.donor-row ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--sp-3) var(--sp-8); }
-.donor-row li {
-  display: inline-flex; align-items: center; gap: var(--sp-3);
-  color: var(--steel); font-size: var(--fs-lg); text-transform: uppercase; letter-spacing: .02em;
-  font-variation-settings: "wdth" 112, "wght" 700;
-}
-.donor-row li::before { content: ""; flex: none; width: 9px; height: 9px; background: var(--tc); }
+/* The last card is the cause, not a prize: navy, no plate, button at the foot. */
+.prize--cause { justify-content: space-between; background: var(--navy); }
+.prize--cause .prize__body { padding: var(--sp-8) var(--sp-6); border-top: 0; gap: var(--sp-3); }
+.prize--cause h3 { font-size: var(--fs-xl); }
+.prize--cause p { color: var(--paper); font-size: var(--fs-base); }
+.prize--cause .btn { margin: 0 var(--sp-6) var(--sp-6); text-align: center; }
 
 @media (max-width: 900px) {
   .prize-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .raffle-grand { grid-template-columns: 1fr; }
-  .raffle-grand__value { border-right: 0; border-bottom: 4px dashed var(--ink); }
-  .raffle-grand__value::before, .raffle-grand__value::after {
-    top: auto; right: auto; bottom: -15px; width: 16px; height: 26px; border: 3px solid var(--ticket-rust);
-  }
-  .raffle-grand__value::before { left: -3px; border-left: 0; }
-  .raffle-grand__value::after { right: -3px; border-right: 0; }
-  .raffle-grand__body { padding: var(--sp-12) var(--sp-8); }
-  .donor-row { grid-template-columns: 1fr; }
+  .raffle-grand__media img { max-height: 320px; }
+  .raffle-grand__body { padding: var(--sp-8); }
 }
 @media (max-width: 560px) {
   .prize-grid { grid-template-columns: 1fr; }
-  body[data-page="raffle"] .page-head { padding-bottom: 9.5rem; }
-  .ticket-roll__ticket { width: 9.5rem; height: 4rem; padding: 0 var(--sp-4); }
-  .ticket-roll__ticket strong { font-size: 1.25rem; }
+  .raffle-grand__body { padding: var(--sp-8) var(--sp-6); }
 }
 
 /* ============ Mercuria ============ */
@@ -1044,6 +914,23 @@ body[data-page="raffle"] .page-head { position: relative; overflow: hidden; padd
 .home-schedule h3 { margin-bottom: var(--sp-1); }
 .home-schedule p { margin: 0; color: var(--steel); }
 @media (max-width: 640px) { .home-schedule li { grid-template-columns: 1fr; gap: var(--sp-2); } }
+
+.home-race { position: relative; isolation: isolate; overflow: hidden; }
+.home-race__photo { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; object-position: 0% 50%; }
+/* Text sits on the right so the welcome sign on the left of the photo stays clear. */
+.home-race::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(270deg, color-mix(in srgb, var(--ink) 94%, transparent) 0%, color-mix(in srgb, var(--ink) 88%, transparent) 45%, color-mix(in srgb, var(--ink) 25%, transparent) 75%, transparent 100%);
+}
+.home-race .home-section__head, .home-race .home-schedule { max-width: min(680px, 48%); margin-left: auto; }
+/* Tighter than the other home sections so the photo doesn't turn into a tall scroll. */
+.home-race { padding: var(--sp-16) 0; }
+.home-race .home-section__head { margin-bottom: var(--sp-8); }
+.home-race .home-schedule li { padding: var(--sp-4) 0; }
+@media (max-width: 1280px) {
+  .home-race::before { background: color-mix(in srgb, var(--ink) 90%, transparent); }
+  .home-race .home-section__head, .home-race .home-schedule { max-width: none; }
+}
 
 .home-obstacles { list-style: none; margin: 0 0 var(--sp-8); padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); border-top: 3px solid var(--navy-line); }
 .home-obstacles li { border-bottom: 1px solid var(--navy-line); border-right: 1px solid var(--navy-line); }
