@@ -235,12 +235,9 @@ ul, ol { margin: 0 0 var(--sp-4); padding-left: var(--sp-6); }
 
 /* ============ Interior pages (empty for now) ============ */
 
-.page-head { background: var(--ink); border-bottom: 3px solid var(--navy-line); padding: var(--sp-24) 0; }
-.page-head h1 { font-size: clamp(2.5rem, 7vw, 5.5rem); }
+.page-head { background: var(--ink); border-bottom: 3px solid var(--navy-line); padding: var(--sp-12) 0; }
+.page-head h1 { margin-bottom: var(--sp-2); font-size: clamp(2.5rem, 7vw, 5.5rem); }
 .page-head p { color: var(--steel); font-size: var(--fs-lg); margin: 0; }
-/* Pages whose head is just a title and one line get a shorter band. */
-body[data-page="raffle"] .page-head, body[data-page="sponsors"] .page-head { padding: var(--sp-12) 0; }
-body[data-page="raffle"] .page-head h1, body[data-page="sponsors"] .page-head h1 { margin-bottom: var(--sp-2); }
 
 .section { padding: var(--sp-24) 0; }
 .stub { border: 2px dashed var(--navy-line); padding: var(--sp-16); color: var(--steel); }
@@ -839,51 +836,49 @@ a.sponsor:hover .sponsor__cta, a.sponsor:focus-visible .sponsor__cta { opacity: 
 
 .home-cause__logo { display: block; width: 220px; max-width: 100%; margin: 0 auto var(--sp-6); }
 
-/* Title-sponsor band near the foot of the page. Navy between two black
-   sections, so the credit reads as a seam in the strata, not another block.
-   Words and mark sit either side of a divider rule, the way the nav slabs do. */
+/* Title-sponsor band straight under the hero. Split slab: Mercuria's LNG terminal in its own
+   colors with their mark on top; the credit and a link to the Mercuria tab on the right. */
 .home-presenter {
-  background: var(--navy);
-  border-top: 3px solid var(--navy-line);
-  border-bottom: 3px solid var(--navy-line);
-  padding: var(--sp-24) 0;
-  position: relative;
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  background: var(--ink); border-bottom: 3px solid var(--navy-line);
 }
-.home-presenter::before {
-  content: ""; position: absolute; inset: 0;
-  background-image: var(--grain); opacity: .12; pointer-events: none;
+.home-presenter__media {
+  position: relative; isolation: isolate; overflow: hidden;
+  display: grid; place-items: center; min-height: 360px; padding: var(--sp-12) var(--sp-8);
+  border-right: 3px solid var(--navy-line);
 }
-.home-presenter__lockup {
-  position: relative;
-  display: flex; align-items: center; justify-content: space-between;
-  gap: clamp(var(--sp-6), 4vw, var(--sp-16));
+.home-presenter__photo {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
 }
-.home-presenter__label {
-  margin: 0;
-  color: var(--paper);
-  font-size: clamp(1.75rem, 4vw, 3.25rem);
-  font-variation-settings: "wdth" 118, "wght" 800;
-  line-height: 1;
-  text-transform: uppercase;
-  letter-spacing: .01em;
-  max-width: 9ch;
-  text-align: left;
+/* Darken just behind the mark so it reads; the edges keep the photo's full color. */
+.home-presenter__media::after {
+  content: ""; position: absolute; inset: 0; z-index: 1;
+  background: radial-gradient(ellipse at center, color-mix(in srgb, var(--ink) 62%, transparent) 0%, transparent 72%);
 }
-.home-presenter__rule { flex: none; width: 3px; align-self: stretch; background: var(--navy-edge); }
-.home-presenter__mark { display: block; margin-right: clamp(0px, 6vw, 120px); opacity: .92; transition: opacity .12s linear; }
-.home-presenter__mark:hover, .home-presenter__mark:focus-visible { opacity: 1; }
-.home-presenter__mark img { height: clamp(104px, 17vw, 260px); width: auto; }
+.home-presenter__mark { position: relative; z-index: 2; width: min(100%, 340px); height: auto; }
 
-@media (max-width: 720px) {
-  .home-presenter { padding: var(--sp-16) 0; }
-  .home-presenter__lockup { flex-direction: column; align-items: flex-start; gap: var(--sp-6); }
-  .home-presenter__label { max-width: none; }
-  .home-presenter__rule { align-self: auto; width: 96px; height: 3px; }
-  .home-presenter__mark { margin-right: 0; }
+.home-presenter__body {
+  display: grid; align-content: center; justify-items: start; gap: var(--sp-4);
+  padding: var(--sp-12) clamp(var(--sp-6), 5vw, var(--sp-16));
+}
+.home-presenter__body h2 { margin: 0; }
+.home-presenter__body p { margin: 0; max-width: 34rem; }
+.home-presenter__body .btn { margin-top: var(--sp-4); }
+
+@media (max-width: 900px) {
+  .home-presenter { grid-template-columns: 1fr; }
+  .home-presenter__media { min-height: 240px; border-right: 0; border-bottom: 3px solid var(--navy-line); }
+  .home-presenter__mark { width: min(70%, 280px); }
+  .home-presenter__body { padding: var(--sp-12) var(--sp-6); }
 }
 
 /* ============ Home: sections ============ */
 /* Bands alternate navy and black so the page reads as strata, not cards. */
+
+/* Slim band at the foot of the page: last year's results and photos, one line of copy and two buttons. */
+.home-recap { padding: var(--sp-12) 0; background: var(--ink); border-top: 3px solid var(--navy-line); border-bottom: 3px solid var(--navy-line); }
+.home-recap__inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--sp-6) var(--sp-12); }
+.home-recap h2 { margin: var(--sp-2) 0 0; font-size: clamp(1.75rem, 3.4vw, 2.5rem); }
 
 .home-section { padding: var(--sp-24) 0; }
 .home-section--dark { background: var(--ink); }
@@ -1043,11 +1038,7 @@ a.sponsor:hover .sponsor__cta, a.sponsor:focus-visible .sponsor__cta { opacity: 
 
 
 /* ============ About: editorial layout ============ */
-body[data-page="about"]::after { display: none; }
-body[data-page="about"] .page-head { padding: clamp(56px, 7vw, 100px) 0; }
-body[data-page="about"] .page-head h1 { margin-bottom: var(--sp-6); }
-body[data-page="about"] main > .about-section > .wrap,
-body[data-page="about"] .page-head > .wrap { max-width: 1200px; }
+body[data-page="about"] main > .about-section > .wrap { max-width: 1200px; }
 
 .about-section { padding: clamp(44px, 6vw, 80px) 0; }
 .about-section + .about-section > .wrap { position: relative; }
