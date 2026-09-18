@@ -12,9 +12,6 @@ document.addEventListener('DOMContentLoaded', function () {
       nav.classList.toggle('is-open', !open);
     });
   }
-  document.querySelectorAll('[data-year]').forEach(function (el) {
-    el.textContent = new Date().getFullYear();
-  });
 
   /* Word roll (performativeUI "WordRoll"): <span data-word-roll> holding .word-roll__word spans,
      the first marked .is-active. Every 2.2s the active word rolls up and the next rolls in.
