@@ -732,6 +732,16 @@ a.sponsor:hover .sponsor__cta, a.sponsor:focus-visible .sponsor__cta { opacity: 
 }
 @media (max-width: 560px) {
   .merc-facts > div { grid-template-columns: 1fr; }
+  /* The sign runs right across the photo, so a tall frame crops it to "RCURIA":
+     cover reveals only width/(height x 1.52) of the picture, and the wordmark is
+     55.8% of it. A 112vw frame shows 58.7% — the whole word with a little air —
+     and the 27% offset is what puts that window over the word rather than the
+     doorway. Type is pinned to two lines so it lands under the sign, not across
+     it. Retune both together: a taller frame drops letters. */
+  .merc-hero__inner { min-height: min(112vw, 560px); padding-block: var(--sp-12) var(--sp-8); }
+  .merc-hero__photo { object-position: 27% 50%; }
+  .merc-hero__title { font-size: 2.25rem; max-width: 16ch; }
+  .merc-hero__lede { font-size: 1rem; }
 }
 
 /* ============ Home: video hero ============ */
