@@ -3,6 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Address bar shows /about, not /about.html. GitHub Pages serves both, so the
+       tidied address is a real link. Files on disk keep .html; no-op from file://. -->
+  <script>
+    (function () {
+      if (location.protocol === 'file:') return;
+      var t = location.pathname.replace(/\/index\.html$/, '/').replace(/\.html$/, '');
+      if (t !== location.pathname) {
+        history.replaceState(null, '', t + location.search + location.hash);
+      }
+    })();
+  </script>
   <title>Raffle | Gladiator Dash</title>
   <meta name="description" content="Raffle prizes and the drawing">
   <link rel="icon" href="media/shared/gladiator-white.png">
@@ -11,6 +22,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
   <link rel="stylesheet" href="assets/site.css">
+
+  <link rel="canonical" href="https://gladiatordash.com/raffle">
 </head>
 <body data-page="raffle">
 
