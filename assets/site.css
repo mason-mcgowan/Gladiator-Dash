@@ -44,9 +44,14 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+/* iOS 26 paints the scrolled document into the status-bar strip above a sticky
+   header, so page content used to show through above the nav bar. Scrolling body
+   instead of the document keeps content clipped to the viewport, and the strip
+   then takes body's background — hence --ink here and on body, matching the bar.
+   main carries the page navy so nothing else changes. */
+html { -webkit-text-size-adjust: 100%; height: 100%; overflow: hidden; background: var(--ink); }
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
+  body { scroll-behavior: auto; }
   *, *::before, *::after {
     animation-duration: .001ms !important;
     animation-iteration-count: 1 !important;
@@ -56,14 +61,16 @@ html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  background: var(--navy-deep);
+  height: 100%;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  background: var(--ink);
   color: var(--steel);
   font-family: var(--font);
   font-variation-settings: "wdth" 100, "wght" 400;
   font-size: var(--fs-base);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
@@ -78,7 +85,7 @@ body::after {
   z-index: 9999;
 }
 
-main { flex: 1 0 auto; }
+main { flex: 1 0 auto; background: var(--navy-deep); }
 
 h1, h2, h3 {
   margin: 0 0 var(--sp-4);
@@ -114,16 +121,6 @@ ul, ol { margin: 0 0 var(--sp-4); padding-left: var(--sp-6); }
   position: sticky; top: 0; z-index: 50;
   background: var(--ink);
   border-bottom: 3px solid var(--navy-line);
-}
-/* iOS paints the page behind the status bar but pins the sticky bar below it, so
-   the hero used to scroll through the gap. This slab rides directly above the bar
-   in the same black and fills it. Deliberately taller than any status bar; it sits
-   off the top of the screen, so it is invisible everywhere else. */
-.site-header::before {
-  content: "";
-  position: absolute; left: 0; right: 0; bottom: 100%;
-  height: 200px;
-  background: var(--ink);
 }
 .site-header__inner {
   max-width: var(--wrap); margin-inline: auto;
