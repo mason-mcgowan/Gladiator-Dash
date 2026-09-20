@@ -66,9 +66,12 @@
           height="500"
         >
 
-        <span>Home</span>
+        <span class="site-header__brand-label">Home</span>
 
       </a>
+
+      <!-- Mobile only: names the page you are on, since the tabs are in the drawer. -->
+      <span class="site-header__current" aria-hidden="true">About</span>
 
       <button
         class="nav-toggle"
@@ -89,6 +92,15 @@
       >
 
         <ul class="site-nav__list">
+
+          <!-- Drawer only: on desktop the mark beside the tabs is the Home tab. -->
+          <li class="site-nav__home">
+            <a
+              href="index.html"
+            >
+              Home
+            </a>
+          </li>
 
           <li>
             <a href="obstacles.html">

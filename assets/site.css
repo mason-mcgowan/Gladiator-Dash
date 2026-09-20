@@ -145,9 +145,14 @@ ul, ol { margin: 0 0 var(--sp-4); padding-left: var(--sp-6); }
 .site-header__brand:hover { color: var(--white); background: var(--navy); }
 .site-header__brand[aria-current="page"] { color: var(--white); border-bottom-color: var(--white); }
 
+/* Only shown once the tabs collapse into the drawer — see the media query below. */
+.site-header__current { display: none; }
+
 .site-nav { flex: 1; display: flex; align-items: stretch; }
 .site-nav__list { flex: 1; display: flex; align-items: stretch; gap: 0; margin: 0; padding: 0; list-style: none; }
 .site-nav__list li { flex: auto; display: flex; border-left: 1px solid var(--navy-line); }
+/* The drawer's Home row — redundant on desktop, where the mark is the Home tab. */
+.site-nav__home { display: none; }
 
 /* Stencil-style signage — the vernacular of the event itself. */
 .site-nav__list a {
@@ -184,6 +189,21 @@ ul, ol { margin: 0 0 var(--sp-4); padding-left: var(--sp-6); }
 @media (max-width: 1320px) {
   .site-header__inner { min-height: 76px; align-items: center; }
   .site-header__brand { padding: var(--sp-3) 0; border-bottom: 0; }
+  /* The mark keeps its link home, so "Home" stays as the link's name for screen
+     readers while the slab beside it names the page the visitor is actually on. */
+  .site-header__brand-label {
+    position: absolute; width: 1px; height: 1px;
+    overflow: hidden; clip-path: inset(50%); white-space: nowrap;
+  }
+  .site-header__current {
+    display: block; min-width: 0;
+    margin-left: var(--sp-4); padding-left: var(--sp-4);
+    border-left: 2px solid var(--navy-line);
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    color: var(--white); font-size: 1.0625rem;
+    font-variation-settings: "wdth" 118, "wght" 700;
+    letter-spacing: .045em; text-transform: uppercase;
+  }
   .nav-toggle {
     display: flex; flex-direction: column; justify-content: center; gap: 6px;
     margin-left: auto; width: 52px; height: 52px;
@@ -202,6 +222,7 @@ ul, ol { margin: 0 0 var(--sp-4); padding-left: var(--sp-6); }
   .site-nav__list li { border-left: 0; border-top: 1px solid var(--navy-line); }
   .site-nav__list { flex: none; }
   .site-nav__list li { flex: none; }
+  .site-nav__home { display: flex; }
   .site-nav__list a { justify-content: flex-start; padding: var(--sp-5) var(--sp-6); font-size: var(--fs-lg); border-bottom: 0; }
   .site-nav__cta { margin: var(--sp-6) var(--sp-6) 0; padding: var(--sp-4) var(--sp-8); border-bottom: 0; }
 }

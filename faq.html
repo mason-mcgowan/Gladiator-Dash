@@ -37,8 +37,11 @@
 
       <a class="site-header__brand" href="index.html">
         <img src="media/shared/gladiator-white.png" alt="" width="500" height="500">
-        <span>Home</span>
+        <span class="site-header__brand-label">Home</span>
       </a>
+
+      <!-- Mobile only: names the page you are on, since the tabs are in the drawer. -->
+      <span class="site-header__current" aria-hidden="true">FAQ</span>
 
       <button class="nav-toggle" type="button"
               aria-label="Menu" aria-expanded="false" aria-controls="site-nav">
@@ -47,6 +50,8 @@
 
       <nav class="site-nav" id="site-nav" aria-label="Main">
         <ul class="site-nav__list">
+        <!-- Drawer only: on desktop the mark beside the tabs is the Home tab. -->
+        <li class="site-nav__home"><a href="index.html">Home</a></li>
         <li><a href="obstacles.html">Obstacles</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="faq.html" aria-current="page">FAQ</a></li>
