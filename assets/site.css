@@ -151,8 +151,9 @@ ul, ol { margin: 0 0 var(--sp-4); padding-left: var(--sp-6); }
 .site-nav { flex: 1; display: flex; align-items: stretch; }
 .site-nav__list { flex: 1; display: flex; align-items: stretch; gap: 0; margin: 0; padding: 0; list-style: none; }
 .site-nav__list li { flex: auto; display: flex; border-left: 1px solid var(--navy-line); }
-/* The drawer's Home row — redundant on desktop, where the mark is the Home tab. */
-.site-nav__home { display: none; }
+/* The drawer's Home row — redundant on desktop, where the mark is the Home tab.
+   Needs the li in the selector to outweigh the .site-nav__list li rule above. */
+.site-nav__list li.site-nav__home { display: none; }
 
 /* Stencil-style signage — the vernacular of the event itself. */
 .site-nav__list a {
@@ -222,7 +223,7 @@ ul, ol { margin: 0 0 var(--sp-4); padding-left: var(--sp-6); }
   .site-nav__list li { border-left: 0; border-top: 1px solid var(--navy-line); }
   .site-nav__list { flex: none; }
   .site-nav__list li { flex: none; }
-  .site-nav__home { display: flex; }
+  .site-nav__list li.site-nav__home { display: flex; }
   .site-nav__list a { justify-content: flex-start; padding: var(--sp-5) var(--sp-6); font-size: var(--fs-lg); border-bottom: 0; }
   .site-nav__cta { margin: var(--sp-6) var(--sp-6) 0; padding: var(--sp-4) var(--sp-8); border-bottom: 0; }
 }
