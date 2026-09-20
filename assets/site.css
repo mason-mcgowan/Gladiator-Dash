@@ -110,10 +110,14 @@ ul, ol { margin: 0 0 var(--sp-4); padding-left: var(--sp-6); }
 
 /* ============ Header — the tabs are slabs ============ */
 
+/* iOS draws the page edge to edge, behind the status bar. The pad lets the bar's
+   own black fill that strip instead of the hero scrolling through it; env() is 0
+   everywhere else, so desktop is untouched. Needs viewport-fit=cover in the head. */
 .site-header {
   position: sticky; top: 0; z-index: 50;
   background: var(--ink);
   border-bottom: 3px solid var(--navy-line);
+  padding-top: env(safe-area-inset-top, 0px);
 }
 .site-header__inner {
   max-width: var(--wrap); margin-inline: auto;

@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- viewport-fit=cover lets the page reach the screen edge on iOS and turns on
+       env(safe-area-inset-*), which .site-header pads with. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <!-- Tints Safari's top strip on iOS so it matches the nav bar instead of the page
        background. Mirrors --ink on .site-header; a meta tag can't read a CSS token. -->
   <meta name="theme-color" content="#06090e">
