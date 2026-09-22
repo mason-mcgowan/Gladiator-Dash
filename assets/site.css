@@ -622,74 +622,99 @@ a.sponsor:hover .sponsor__cta, a.sponsor:focus-visible .sponsor__cta { opacity: 
 @media (max-width: 900px) { .faq-group__inner { grid-template-columns: 1fr; gap: var(--sp-6); } }
 
 /* ============ Raffle ============ */
-/* Most prize photos and donor logos come with white baked in, so each one sits on a small
-   white tile inset in a black card. The white stays in the tiles, never the whole card. */
+/* Between raffles the page is one big ticket: white slab, perforated stub, square notches
+   punched where the stub tears off. The notches are the page navy so they read as holes. */
 
-.raffle-intro { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: var(--sp-8); margin-bottom: var(--sp-16); }
-.raffle-intro .band__head { margin-bottom: 0; }
-
-/* Grand prize: photo tile on the left, name and value on the right. */
-.raffle-grand {
-  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 3fr); gap: var(--sp-6);
-  margin-bottom: var(--sp-12); padding: var(--sp-6);
-  background: var(--ink); border: 2px solid var(--navy-line);
+.ticket {
+  --notch: 22px;
+  position: relative;
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(15rem, 22rem);
+  background: var(--white); color: var(--ink);
 }
-.raffle-grand__media { display: grid; place-items: center; padding: var(--sp-6); background: var(--white); }
-.raffle-grand__media img { display: block; width: auto; height: auto; max-width: 100%; max-height: 290px; }
-.raffle-grand__body { display: grid; align-content: center; justify-items: start; gap: var(--sp-4); padding: var(--sp-6) var(--sp-8); }
-.raffle-grand__body h3 { margin: 0; font-size: clamp(1.75rem, 3.4vw, 2.75rem); text-wrap: balance; }
-.raffle-grand__body p { margin: 0; }
-.raffle-grand__value {
-  display: grid; gap: var(--sp-2); justify-self: stretch;
-  margin: var(--sp-2) 0 var(--sp-4); padding-top: var(--sp-6); border-top: 2px solid var(--navy-line);
-}
-.raffle-grand__body .raffle-grand__amount {
-  color: var(--white); font-size: clamp(3rem, 6vw, 5rem); line-height: .9; letter-spacing: -.04em;
-  font-variant-numeric: tabular-nums; font-variation-settings: "wdth" 125, "wght" 800;
-}
-.raffle-grand__unit, .prize__value {
-  margin: 0; color: var(--steel); font-size: var(--fs-sm); text-transform: uppercase; letter-spacing: .08em;
+.ticket__main { padding: var(--sp-12); }
+.ticket__kicker, .ticket__stub-label {
+  margin: 0; color: var(--navy); font-size: var(--fs-sm);
+  text-transform: uppercase; letter-spacing: .1em;
   font-variation-settings: "wdth" 110, "wght" 700;
 }
-
-/* Separate cards with real gaps; 12 of them, so rows fill at 4, 3, 2 and 1 across. */
-.prize-grid {
-  list-style: none; margin: 0; padding: 0;
-  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--sp-6);
+.ticket__year {
+  margin: var(--sp-2) 0 0; color: var(--ink);
+  font-size: clamp(6rem, 22vw, 17rem); line-height: .8; letter-spacing: -.055em;
+  font-variant-numeric: tabular-nums; font-variation-settings: "wdth" 125, "wght" 900;
+  margin-left: -.04em;
 }
-.prize { display: flex; flex-direction: column; background: var(--ink); border: 2px solid var(--navy-line); }
-.prize__media {
-  display: grid; place-items: center; height: 200px; margin: var(--sp-4) var(--sp-4) 0; padding: var(--sp-5);
-  background: var(--white); overflow: hidden;
+.ticket__status {
+  display: inline-block; margin: var(--sp-6) 0 0; padding: var(--sp-2) var(--sp-4);
+  background: var(--ink); color: var(--white);
+  font-size: clamp(1.25rem, 2.6vw, 2rem); line-height: 1.1;
+  text-transform: uppercase; letter-spacing: .02em;
+  font-variation-settings: "wdth" 122, "wght" 800;
 }
-.prize__media img { display: block; width: auto; height: auto; max-width: 100%; max-height: 100%; min-height: 0; }
-/* Logos share one box so a tall mark and a wide wordmark read at the same weight. */
-.prize__media--logo img { max-width: min(100%, 210px); max-height: min(100%, 110px); }
-/* Real photos fill the tile edge to edge instead of floating like a logo. */
-.prize__media--photo { padding: 0; }
-.prize__media--photo img { width: 100%; height: 100%; object-fit: cover; }
-.prize__body { display: grid; gap: var(--sp-2); align-content: start; padding: var(--sp-5) var(--sp-6) var(--sp-6); }
-.prize__body h3 { margin: 0; font-size: var(--fs-lg); line-height: 1.15; }
-.prize__body p { margin: 0; font-size: var(--fs-sm); }
+.ticket__note { max-width: 44ch; margin: var(--sp-6) 0 0; color: var(--navy); font-size: var(--fs-lg); }
 
-/* The last card is the cause, not a prize: navy, no tile, button at the foot. */
-.prize--cause { justify-content: space-between; background: var(--navy); }
-.prize--cause .prize__body { padding: var(--sp-8) var(--sp-6); gap: var(--sp-3); }
-.prize--cause h3 { font-size: var(--fs-xl); }
-.prize--cause p { color: var(--paper); font-size: var(--fs-base); }
-.prize--cause .btn { margin: 0 var(--sp-6) var(--sp-6); text-align: center; }
+.ticket__stub {
+  position: relative;
+  display: flex; flex-direction: column; justify-content: flex-end; gap: var(--sp-1);
+  padding: var(--sp-12) var(--sp-8);
+  background: var(--paper);
+  border-left: 3px dashed var(--ink);
+}
+.ticket__stub p { margin: 0; }
+.ticket__stub-value {
+  color: var(--ink); font-size: clamp(2.25rem, 4vw, 3.25rem); line-height: .95;
+  text-transform: uppercase; letter-spacing: -.02em;
+  font-variation-settings: "wdth" 125, "wght" 800;
+}
+.ticket__stub-date {
+  margin-top: var(--sp-3) !important; padding-top: var(--sp-3);
+  border-top: 2px solid var(--ink);
+  color: var(--ink); font-size: var(--fs-lg);
+  font-variation-settings: "wdth" 115, "wght" 700;
+}
+.ticket__stub-place { color: var(--navy); font-size: var(--fs-sm); }
 
-@media (max-width: 1200px) { .prize-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+/* Square punches at both ends of the perforation. */
+.ticket__stub::before, .ticket__stub::after {
+  content: ""; position: absolute; left: calc(var(--notch) / -2 - 1.5px);
+  width: var(--notch); height: var(--notch); background: var(--navy-deep);
+}
+.ticket__stub::before { top: 0; }
+.ticket__stub::after { bottom: 0; }
+
+/* What to do until tickets open: three slabs split by rules, not cards. */
+.raffle-next {
+  list-style: none; margin: var(--sp-16) 0 0; padding: 0;
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 3px solid var(--navy-line);
+}
+.raffle-next li {
+  display: flex; flex-direction: column; gap: var(--sp-3);
+  padding: var(--sp-8) var(--sp-8) 0;
+  border-left: 2px solid var(--navy-line);
+}
+.raffle-next li:first-child { padding-left: 0; border-left: 0; }
+.raffle-next h3 { margin: 0; font-size: var(--fs-xl); }
+.raffle-next p { margin: 0; max-width: 38ch; }
+.raffle-next .btn-row { margin-top: auto; padding-top: var(--sp-4); gap: var(--sp-3); }
+
 @media (max-width: 900px) {
-  .prize-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-4); }
-  .raffle-grand { grid-template-columns: 1fr; }
-  .raffle-grand__media img { max-height: 240px; }
-  .raffle-grand__body { padding: var(--sp-4) var(--sp-2) var(--sp-2); }
+  .ticket { grid-template-columns: 1fr; }
+  .ticket__main { padding: var(--sp-8) var(--sp-6); }
+  .ticket__stub { padding: var(--sp-8) var(--sp-6); border-left: 0; border-top: 3px dashed var(--ink); }
+  .ticket__stub::before, .ticket__stub::after { top: calc(var(--notch) / -2 - 1.5px); bottom: auto; }
+  .ticket__stub::before { left: 0; }
+  .ticket__stub::after { left: auto; right: 0; }
+  .raffle-next { grid-template-columns: 1fr; }
+  .raffle-next li { padding: var(--sp-8) 0; border-left: 0; border-top: 2px solid var(--navy-line); }
+  .raffle-next li:first-child { border-top: 0; }
+  .raffle-next li:last-child { padding-bottom: 0; }
 }
 @media (max-width: 560px) {
-  .prize-grid { grid-template-columns: 1fr; }
-  .raffle-grand { padding: var(--sp-4); }
+  .ticket { --notch: 16px; }
+  .raffle-next .btn { flex: 1 1 100%; text-align: center; }
 }
+
+.home-cause__donate { margin-top: var(--sp-2); }
 
 /* ============ Mercuria ============ */
 /* Both photos run in their own colors; a dark gradient under the text keeps it readable. */
@@ -875,13 +900,14 @@ a.sponsor:hover .sponsor__cta, a.sponsor:focus-visible .sponsor__cta { opacity: 
 /* Logo marks sit on dark, so knock them back to flat white. */
 .mark-white { filter: brightness(0) invert(1); }
 
-.home-cause__logo { display: block; width: 220px; max-width: 100%; margin: 0 auto var(--sp-6); }
+.home-cause__logo { display: block; width: 180px; max-width: 100%; margin: 0 auto var(--sp-4); }
 
-/* Title-sponsor band straight under the hero. Split slab: Mercuria's LNG terminal in its own
-   colors with their mark on top; the credit and a link to the Mercuria tab on the right. */
+/* Title-sponsor band, under the Still Creek section. Split slab: Mercuria's LNG terminal in its
+   own colors with their mark on top; the credit and a link to the Mercuria tab on the right. */
 .home-presenter {
   display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  background: var(--ink); border-bottom: 3px solid var(--navy-line);
+  background: var(--ink);
+  border-top: 3px solid var(--navy-line); border-bottom: 3px solid var(--navy-line);
 }
 .home-presenter__media {
   position: relative; isolation: isolate; overflow: hidden;
@@ -906,9 +932,10 @@ a.sponsor:hover .sponsor__cta, a.sponsor:focus-visible .sponsor__cta { opacity: 
 .home-presenter__body p { margin: 0; max-width: 34rem; }
 .home-presenter__body .btn { margin-top: var(--sp-4); }
 
+/* Stacked, the credit leads and the photo with Mercuria's mark follows it. */
 @media (max-width: 900px) {
   .home-presenter { grid-template-columns: 1fr; }
-  .home-presenter__media { min-height: 240px; border-right: 0; border-bottom: 3px solid var(--navy-line); }
+  .home-presenter__media { order: 2; min-height: 240px; border-right: 0; border-top: 3px solid var(--navy-line); }
   .home-presenter__mark { width: min(70%, 280px); }
   .home-presenter__body { padding: var(--sp-12) var(--sp-6); }
 }
@@ -926,7 +953,10 @@ a.sponsor:hover .sponsor__cta, a.sponsor:focus-visible .sponsor__cta { opacity: 
 .home-section__head { max-width: var(--measure); margin-bottom: var(--sp-12); }
 .home-section__head p { color: var(--steel); margin-bottom: 0; }
 
-.home-cause__grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: var(--sp-16); align-items: start; }
+/* Tighter than the default home section: the photo column runs short, so the extra
+   padding just added scroll. */
+.home-cause { padding: var(--sp-16) 0; }
+.home-cause__grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: var(--sp-12); align-items: start; }
 .home-cause__figure { margin: 0; }
 .home-cause__well {
   aspect-ratio: 3 / 2;
@@ -942,6 +972,7 @@ a.sponsor:hover .sponsor__cta, a.sponsor:focus-visible .sponsor__cta { opacity: 
   font-variant-numeric: tabular-nums; /* digits hold their width while counting */
 }
 .home-raised + p { color: var(--white); font-size: var(--fs-lg); }
+.home-cause__grid > div > p:last-of-type { margin-bottom: var(--sp-4); }
 @media (max-width: 900px) { .home-cause__grid { grid-template-columns: 1fr; gap: var(--sp-12); } }
 
 /* Race day is a genuine sequence, so the timeline earns its markers. */
@@ -963,8 +994,9 @@ a.sponsor:hover .sponsor__cta, a.sponsor:focus-visible .sponsor__cta { opacity: 
   background: linear-gradient(270deg, color-mix(in srgb, var(--ink) 94%, transparent) 0%, color-mix(in srgb, var(--ink) 88%, transparent) 45%, color-mix(in srgb, var(--ink) 25%, transparent) 75%, transparent 100%);
 }
 .home-race .home-section__head, .home-race .home-schedule { max-width: min(680px, 48%); margin-left: auto; }
-/* Tighter than the other home sections so the photo doesn't turn into a tall scroll. */
-.home-race { padding: var(--sp-16) 0; }
+/* Tighter than the other home sections so the photo doesn't turn into a tall scroll.
+   The top rule marks the edge where the photo starts, the way the bands below it do. */
+.home-race { padding: var(--sp-16) 0; border-top: 3px solid var(--navy-line); }
 .home-race .home-section__head { margin-bottom: var(--sp-8); }
 .home-race .home-schedule li { padding: var(--sp-4) 0; }
 @media (max-width: 1280px) {
@@ -983,12 +1015,19 @@ a.sponsor:hover .sponsor__cta, a.sponsor:focus-visible .sponsor__cta { opacity: 
 .home-obstacles a:hover { color: var(--white); background: var(--navy); }
 .home-obstacles small { display: block; margin-top: var(--sp-1); color: var(--steel); font-size: .8125rem; text-transform: none; letter-spacing: 0; font-variation-settings: "wdth" 100, "wght" 400; }
 
-.home-welcome__grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: var(--sp-16); align-items: start; }
+/* Photo and the participant quote share the right column, so the section is as tall as its
+   tallest column instead of stacking the quote under everything. */
+.home-welcome { padding: var(--sp-16) 0; }
+.home-welcome__grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: var(--sp-12); align-items: start; }
+.home-welcome__aside { display: grid; align-content: start; gap: var(--sp-8); }
+/* Wider crop than the file's 3:2 so the photo and quote together match the text column. */
+.home-welcome__aside .home-figure img { aspect-ratio: 16 / 9; object-fit: cover; object-position: center 40%; }
+.home-welcome__grid > div > p:last-child { margin-bottom: 0; }
 .home-quote { margin: 0; border-left: 5px solid var(--white); padding-left: var(--sp-6); }
 .home-quote p { color: var(--white); font-size: var(--fs-lg); line-height: 1.45; }
 .home-quote footer { color: var(--steel); font-size: var(--fs-sm); text-transform: uppercase; letter-spacing: .06em; }
 .home-quote cite { font-style: normal; color: var(--white); font-variation-settings: "wdth" 110, "wght" 700; }
-@media (max-width: 900px) { .home-welcome__grid { grid-template-columns: 1fr; gap: var(--sp-12); } }
+@media (max-width: 900px) { .home-welcome__grid { grid-template-columns: 1fr; gap: var(--sp-8); } }
 
 .home-sponsor { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-12); }
 .home-sponsor__mark { min-width: 240px; min-height: 100px; border: 2px solid var(--navy-line); display: grid; place-items: center; padding: var(--sp-6); color: var(--navy-edge); font-size: var(--fs-sm); }
