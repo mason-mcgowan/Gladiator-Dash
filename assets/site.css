@@ -853,6 +853,7 @@ a.sponsor:hover .sponsor__cta, a.sponsor:focus-visible .sponsor__cta { opacity: 
 @keyframes hero-line { from { opacity: 0; transform: translateY(.5rem); } to { opacity: 1; transform: none; } }
 
 .home-hero__actions { display: flex; flex-wrap: wrap; gap: var(--sp-4); justify-content: center; }
+.home-hero__actions .btn--lg { padding: var(--sp-5) var(--sp-16); font-size: var(--fs-xl); }
 
 /* Facts pinned along the bottom of the frame. */
 .home-hero__strip {
@@ -884,6 +885,7 @@ a.sponsor:hover .sponsor__cta, a.sponsor:focus-visible .sponsor__cta { opacity: 
   .home-hero__inner { padding: var(--sp-24) var(--sp-6) var(--sp-12); }
   .home-hero__claim span { display: block; }
   .home-hero__claim span + span { margin-left: 0; }
+  .home-hero__actions .btn--lg { padding-inline: var(--sp-8); font-size: var(--fs-lg); }
 }
 
 /* ============ Real imagery ============ */
