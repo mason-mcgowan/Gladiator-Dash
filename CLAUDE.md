@@ -7,7 +7,7 @@ unless asked otherwise.
 - Flat files at the repo root: `index.html`, `obstacles.html`, `faq.html`, ...
 - The site must open from `file://` — every path stays relative and nothing uses
   `fetch()`. Do not reintroduce shared partials loaded at runtime.
-- Header and footer markup is duplicated in each page. Change the nav in all nine.
+- Header and footer markup is duplicated in each page. Change the nav in all eight.
 - One stylesheet: `assets/site.css`. All tokens live in its `:root` block.
 - `media/<tab>/` holds that tab's images; `media/shared/` holds logo and favicon.
 

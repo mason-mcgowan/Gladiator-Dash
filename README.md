@@ -22,7 +22,6 @@ obstacles.html    │
 about.html        │
 faq.html          ├ empty tabs: title only
 sponsors.html     │
-mercuria.html     │
 raffle.html       │
 giveback.html     ┘
 
@@ -32,7 +31,7 @@ media/<tab>/      images for that tab; media/shared/ for logo and favicon
 ```
 
 The header and footer are written into each HTML file. Changing the nav means
-editing all nine — the tradeoff for opening the site without a server.
+editing all eight — the tradeoff for opening the site without a server.
 
 ## Design
 
@@ -53,7 +52,6 @@ Not affiliated with Texas A&M — no A&M branding, naming, or maroon.
 | About | One Army and Still Creek Ranch |
 | FAQ | ~17 Q&As in General / Race Day / Registration groups |
 | Sponsors | ~50 logos across Title, Arena, Gold, Silver, Bronze |
-| Mercuria | Title sponsor profile |
 | Raffle | 12 prizes, Zeffy ticket link, endurance race rules |
 | Giveback | 4 competing categories, $1,000 prize |
 
