@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Tints Safari's top strip on iOS so it matches the nav bar instead of the page
+       background. Mirrors --ink on .site-header; a meta tag can't read a CSS token. -->
+  <meta name="theme-color" content="#06090e">
+  <!-- Address bar shows /about, not /about.html. GitHub Pages serves both, so the
+       tidied address is a real link. Files on disk keep .html; no-op from file://. -->
+  <script>
+    (function () {
+      if (location.protocol === 'file:') return;
+      var t = location.pathname.replace(/\/index\.html$/, '/').replace(/\.html$/, '');
+      if (t !== location.pathname) {
+        history.replaceState(null, '', t + location.search + location.hash);
+      }
+    })();
+  </script>
+  <title>Contact | Gladiator Dash</title>
+  <meta name="description" content="Email, phone and Instagram for Gladiator Dash, plus directions to the course at Lake Bryan.">
+  <link rel="icon" href="media/shared/GD-Favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
+  <link rel="stylesheet" href="assets/site.css">
+
+  <link rel="canonical" href="https://gladiatordash.com/contact">
+</head>
+<body data-page="contact">
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+
+      <a class="site-header__brand" href="index.html">
+        <img src="media/shared/gladiator-white.png" alt="" width="500" height="500">
+        <span class="site-header__brand-label">Home</span>
+      </a>
+
+      <!-- Mobile only: names the page you are on, since the tabs are in the drawer. -->
+      <span class="site-header__current" aria-hidden="true">Contact</span>
+
+      <button class="nav-toggle" type="button"
+              aria-label="Menu" aria-expanded="false" aria-controls="site-nav">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul class="site-nav__list">
+        <!-- Drawer only: on desktop the mark beside the tabs is the Home tab. -->
+        <li class="site-nav__home"><a href="index.html">Home</a></li>
+        <li><a href="obstacles.html">Obstacles</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="sponsors.html">Sponsors</a></li>
+        <li><a href="raffle.html">Raffle</a></li>
+        <li><a href="giveback.html">Giveback</a></li>
+        <li><a href="contact.html" aria-current="page">Contact</a></li>
+        </ul>
+        <a class="site-nav__cta" href="https://www.zeffy.com/en-US/ticketing/gladiator-dash--2027">Register</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <main id="main">
+
+    <div class="page-head">
+      <div class="wrap">
+        <h1>Contact</h1>
+        <p>Questions about race day, sponsorship or the raffle? Here’s who to reach.</p>
+      </div>
+    </div>
+
+    <!-- The one loud thing on the page: the inbox that answers almost everything,
+         set as a white slab like the Register tab. -->
+    <section class="contact-hero" aria-labelledby="contact-email">
+      <div class="wrap">
+        <h2 class="contact-hero__label" id="contact-email">Email us</h2>
+        <a class="contact-slab" href="mailto:onearmy.philanthropy@gmail.com"><span>onearmy.philanthropy</span><span>@gmail.com</span></a>
+        <p class="contact-hero__note">Registration, race day, raffle, sponsorships: start here.</p>
+      </div>
+    </section>
+
+    <section class="band band--ink" aria-labelledby="contact-routes">
+      <div class="wrap contact-routes">
+        <h2 id="contact-routes">Who to ask</h2>
+        <ul class="contact-ledger">
+          <li>
+            <p class="contact-ledger__topic">Sponsorship and packages</p>
+            <p class="contact-ledger__who">Luke Smith, Marketing</p>
+            <a class="contact-ledger__link" href="tel:+17192086181">(719) 208-6181</a>
+          </li>
+          <li>
+            <p class="contact-ledger__topic">Logistics and vendors</p>
+            <p class="contact-ledger__who">Austin Santellana, Logistics</p>
+            <a class="contact-ledger__link" href="tel:+19407811817">(940) 781-1817</a>
+          </li>
+          <li>
+            <p class="contact-ledger__topic">Updates and race photos</p>
+            <p class="contact-ledger__who">Instagram</p>
+            <a class="contact-ledger__link" href="https://www.instagram.com/gladiatordash/" rel="noopener">@gladiatordash</a>
+          </li>
+          <li>
+            <p class="contact-ledger__topic">Everything else</p>
+            <p class="contact-ledger__who">One Army</p>
+            <a class="contact-ledger__link" href="mailto:onearmy.philanthropy@gmail.com">onearmy.philanthropy<wbr>@gmail.com</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="band" aria-labelledby="contact-where">
+      <div class="wrap contact-where">
+        <div>
+          <h2 id="contact-where">Find the course</h2>
+          <address class="contact-where__addr">
+            Lake Bryan<br>
+            8200 Sandy Point Rd<br>
+            Bryan, TX 77807
+          </address>
+          <a class="btn btn--ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Lake+Bryan+8200+Sandy+Point+Rd+Bryan+TX+77807" rel="noopener">Open in Google Maps</a>
+        </div>
+        <p class="contact-where__org">
+          <strong>Gladiator Dash is run by One Army</strong> and benefits Still Creek Ranch.
+          It’s a registered 501(c)(3) charitable organization, EIN 99-3600364. Most race-day
+          questions are already answered in the <a href="faq.html">FAQ</a>.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+
+    <!-- Sponsor strip: Title, Arena and Gold. The logo set is written twice so the
+         30s loop is seamless; the second copy is hidden from screen readers. -->
+    <div class="site-footer__sponsors">
+      <a class="logo-marquee" href="sponsors.html">
+        <span class="logo-marquee__label">Sponsored by</span>
+        <span class="logo-marquee__cta">All sponsors &rarr;</span>
+        <span class="logo-marquee__viewport">
+          <span class="logo-marquee__track">
+            <span class="logo-marquee__group">
+              <span class="logo-marquee__item"><img class="logo-marquee__logo" src="media/sponsors/title/mercuria.png" alt="Mercuria" width="533" height="187" loading="lazy"></span>
+              <span class="logo-marquee__item"><img class="logo-marquee__logo logo-marquee__logo--invert" src="media/sponsors/arena/slate-construction.png" alt="Slate Construction" width="475" height="320" loading="lazy"></span>
+              <span class="logo-marquee__item"><img class="logo-marquee__logo" src="media/sponsors/gold/wings-n-more.png" alt="Wings N More" width="609" height="320" loading="lazy"></span>
+              <span class="logo-marquee__item"><img class="logo-marquee__logo" src="media/sponsors/gold/cognascents.png" alt="Cognascents" width="640" height="74" loading="lazy"></span>
+              <span class="logo-marquee__item"><img class="logo-marquee__logo logo-marquee__logo--invert" src="media/sponsors/gold/elos-water.png" alt="Elos Water" width="640" height="139" loading="lazy"></span>
+              <span class="logo-marquee__item"><img class="logo-marquee__logo logo-marquee__logo--invert" src="media/sponsors/gold/excell-foundations.png" alt="Excell Foundations" width="516" height="279" loading="lazy"></span>
+              <span class="logo-marquee__item"><img class="logo-marquee__logo logo-marquee__logo--invert" src="media/sponsors/gold/monte-longos.png" alt="Monte Longo’s" width="599" height="320" loading="lazy"></span>
+              <span class="logo-marquee__item"><img class="logo-marquee__logo" src="media/sponsors/gold/gfg-wealth-advisors.png" alt="GFG Wealth Advisors" width="640" height="178" loading="lazy"></span>
+              <span class="logo-marquee__item"><img class="logo-marquee__logo logo-marquee__logo--invert" src="media/sponsors/gold/david-gardners-jewelers.png" alt="David Gardner’s Jewelers" width="640" height="95" loading="lazy"></span>
+              <span class="logo-marquee__item"><img class="logo-marquee__logo" src="media/sponsors/gold/vpp-texas.png" alt="VPP Texas" width="286" height="286" loading="lazy"></span>
+            </span>
+            <span class="logo-marquee__group" aria-hidden="true">
+              <span class="logo-marquee__item"><img class="logo-marquee__logo" src="media/sponsors/title/mercuria.png" alt="" width="533" height="187" loading="lazy"></span>
+              <span class="logo-marquee__item"><img class="logo-marquee__logo logo-marquee__logo--invert" src="media/sponsors/arena/slate-construction.png" alt="" width="475" height="320" loading="lazy"></span>
+              <span class="logo-marquee__item"><img class="logo-marquee__logo" src="media/sponsors/gold/wings-n-more.png" alt="" width="609" height="320" loading="lazy"></span>
+              <span class="logo-marquee__item"><img class="logo-marquee__logo" src="media/sponsors/gold/cognascents.png" alt="" width="640" height="74" loading="lazy"></span>
+              <span class="logo-marquee__item"><img class="logo-marquee__logo logo-marquee__logo--invert" src="media/sponsors/gold/elos-water.png" alt="" width="640" height="139" loading="lazy"></span>
+              <span class="logo-marquee__item"><img class="logo-marquee__logo logo-marquee__logo--invert" src="media/sponsors/gold/excell-foundations.png" alt="" width="516" height="279" loading="lazy"></span>
+              <span class="logo-marquee__item"><img class="logo-marquee__logo logo-marquee__logo--invert" src="media/sponsors/gold/monte-longos.png" alt="" width="599" height="320" loading="lazy"></span>
+              <span class="logo-marquee__item"><img class="logo-marquee__logo" src="media/sponsors/gold/gfg-wealth-advisors.png" alt="" width="640" height="178" loading="lazy"></span>
+              <span class="logo-marquee__item"><img class="logo-marquee__logo logo-marquee__logo--invert" src="media/sponsors/gold/david-gardners-jewelers.png" alt="" width="640" height="95" loading="lazy"></span>
+              <span class="logo-marquee__item"><img class="logo-marquee__logo" src="media/sponsors/gold/vpp-texas.png" alt="" width="286" height="286" loading="lazy"></span>
+            </span>
+          </span>
+        </span>
+      </a>
+    </div>
+
+    <div class="site-footer__inner">
+
+      <div class="site-footer__brand">
+        <img src="media/home/gd-logo-white.png" alt="One Army Gladiator Dash, April 11 2027" width="1538" height="643">
+        <p class="site-footer__tagline">
+          <strong>Run by One Army.</strong>
+          Proceeds benefit Still Creek Ranch.
+        </p>
+        <p class="site-footer__nonprofit">Gladiator Dash is a registered 501(c)(3) tax-exempt charitable organization, EIN 99-3600364. Contributions are tax-deductible to the extent permitted by law.</p>
+      </div>
+
+      <nav class="site-footer__nav" aria-label="Footer">
+        <ul>
+          <li><a href="https://www.zeffy.com/en-US/ticketing/gladiator-dash--2027">Register</a></li>
+          <li><a href="obstacles.html">Obstacles</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+        <ul>
+          <li><a href="sponsors.html">Sponsors</a></li>
+          <li><a href="raffle.html">Raffle</a></li>
+          <li><a href="giveback.html">Giveback</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-footer__contact">
+        <h2>Questions</h2>
+        <p><a href="mailto:onearmy.philanthropy@gmail.com">onearmy.philanthropy@gmail.com</a></p>
+        <p><a href="https://www.instagram.com/gladiatordash/" rel="noopener">Instagram</a></p>
+        <p>Lake Bryan, Bryan, Texas</p>
+      </div>
+
+    </div>
+
+    <div class="site-footer__legal">
+      <p>&copy; Gladiator Dash</p>
+    </div>
+  </footer>
+
+  <script src="assets/nav.js"></script>
+</body>
+</html>
